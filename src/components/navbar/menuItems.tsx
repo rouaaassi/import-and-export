@@ -1,34 +1,28 @@
 import React, { FC } from 'react';
 import { Box, Button } from '@mui/material';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Link } from 'react-router-dom';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import DropdownMenu from './dropDownMenu';
 import PATH from '../../../routes/route';
-
-const dropdownItems: Record<string, string[]> = {
-  Pages: ['About', 'Our Team', 'Pricing Plans'],
-  Services: ['Service', 'Service Details'],
-};
-
-const directLinks: Record<string, string> = {
-  Home: PATH.home,
-  'Contact Us': PATH.ContactUs,
-};
 
 interface MenuItemsProps {
   pages: string[];
 }
 
-const MenuItems:FC<MenuItemsProps> = ({ pages }) => (
-  <Box
-    sx={{
-      display: { xs: 'none', md: 'flex' },
-      alignItems: 'center',
-      gap: 3,
-      fontFamily: 'roboto',
-    }}
-  >
-    {pages.map((page: string) => (
+const dropdownItems: { [key: string]: string[] } = {
+  Services: ['Features', 'Service Details'],
+  'Contact Us': ['Our Team', 'Directed'],
+};
+
+const directLinks: { [key: string]: string } = {
+  Home: PATH.home,
+  'About Us' : PATH.ContactUs,
+  'Customer App' : PATH.ContactUs,
+};
+
+const MenuItems: FC<MenuItemsProps> = ({ pages }) => (
+  <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 4 }}>
+    {pages.map((page) => (
       <Box
         key={page}
         sx={{
@@ -44,30 +38,15 @@ const MenuItems:FC<MenuItemsProps> = ({ pages }) => (
           <Button
             component={Link}
             to={directLinks[page]}
-            sx={{
-              color: '#333333',
-              display: 'flex',
-              alignItems: 'center',
-              '&:hover': { color: '#555555', background: 'transparent' },
-              fontWeight: 'bold',
-              textTransform: 'none',
-              fontSize: '14px',
-            }}
+            sx={{ color : page === 'Customer App' ? '#fff' : "#333"
+              , fontWeight: 'bold', fontSize: '16px', textTransform: 'none' }}
           >
             {page}
           </Button>
         ) : (
           <Button
             endIcon={<KeyboardArrowDownIcon />}
-            sx={{
-              color: '#333333',
-              display: 'flex',
-              alignItems: 'center',
-              '&:hover': { color: '#555555', background: 'transparent' },
-              fontWeight: 'bold',
-              textTransform: 'none',
-              fontSize: '14px',
-            }}
+            sx={{ color: '#fff', fontWeight: 'bold', fontSize: '16px', textTransform: 'none' }}
           >
             {page}
           </Button>
