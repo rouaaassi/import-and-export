@@ -2,7 +2,7 @@ const PATH = {
     signup: '/signup',
     login:'/login',
     home :'/home',
-    ContactUs:'/contactus'
+    ContactUs:'/contactus',
 
 };
 export default PATH;

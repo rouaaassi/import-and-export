@@ -16,7 +16,6 @@ const dropdownItems: { [key: string]: string[] } = {
 
 const directLinks: { [key: string]: string } = {
   Home: PATH.home,
-  'About Us': PATH.ContactUs,
   'Customer App': PATH.ContactUs,
 };
 
@@ -26,19 +25,19 @@ const MenuItems: FC<MenuItemsProps> = ({ pages }) => {
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
-      if (offset > 100) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(offset > 100);
     };
 
     window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleScrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 4 }}>
@@ -54,7 +53,20 @@ const MenuItems: FC<MenuItemsProps> = ({ pages }) => {
             },
           }}
         >
-          {directLinks[page] ? (
+          {page === 'About Us' ? (
+            <Button
+              onClick={() => handleScrollToSection('about-section')}
+              sx={{
+                color: scrolled ? '#0118D8' : '#333',
+                fontWeight: 'bold',
+                fontSize: '16px',
+                textTransform: 'none',
+                transition: 'color 0.3s ease',
+              }}
+            >
+              {page}
+            </Button>
+          ) : directLinks[page] ? (
             <Button
               component={Link}
               to={directLinks[page]}
