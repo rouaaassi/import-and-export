@@ -19,7 +19,7 @@ const App: FC = () => {
           <Route path='/login' element={<LogIn />} />
           <Route path='/forgetpassword' element={<ForgetPassword />} />
           <Route path='/about' element={<AboutSection />} />
-          <Route path='employee-dashboard' element={<AdminDashboard />} />
+          <Route path='/admin-dashboard' element={<AdminDashboard />} />
         </Routes>
       </LoadingProvider>
     </>

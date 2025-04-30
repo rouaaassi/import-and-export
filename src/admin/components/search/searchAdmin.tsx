@@ -4,7 +4,8 @@ import SearchIcon from '@mui/icons-material/Search';
 
 const SearchBar: FC = () => {
   const [query, setQuery] = useState<string>('');
-  const handelSearch = ()=>{
+  // will edit soon 🔥
+  const handelSearch = () => {
     console.log('clicked')
   }
 
@@ -13,11 +14,10 @@ const SearchBar: FC = () => {
       display="flex"
       alignItems="center"
       justifyContent="center"
-      width="100%"
       sx={{ marginTop: 2 }}
     >
+      {/* TODO:must to Autocomplete and edit click icon */}
       <TextField
-        fullWidth
         variant="outlined"
         size="small"
         placeholder="Search..."
@@ -26,15 +26,14 @@ const SearchBar: FC = () => {
         InputProps={{
           endAdornment: (
             <InputAdornment position="end">
-            <IconButton onClick={handelSearch}>
-              <SearchIcon sx={{ color: '#333',cursor:'pointer' }} />
+              <IconButton onClick={handelSearch}>
+                <SearchIcon sx={{ color: '#333', cursor: 'pointer' }} />
               </IconButton>
             </InputAdornment>
           ),
         }}
         sx={{
-          maxWidth: 600,
-          minWidth: 300,
+          width:500,
           '& .MuiOutlinedInput-root': {
             height: '40px',
             borderRadius: '12px',

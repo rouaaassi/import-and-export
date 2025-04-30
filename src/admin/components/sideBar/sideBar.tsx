@@ -10,7 +10,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
 
 export default function SideBar() {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const [activePage, setActivePage] = useState("Dashboard");
 
     const pages = [
@@ -28,7 +28,7 @@ export default function SideBar() {
                 height: '100vh',
                 bgcolor: '#0118D8',
                 borderRadius: "36px",
-                position: 'fixed',
+                position: 'relative',
                 top: 0,
                 left: 0,
                 p: 2,
