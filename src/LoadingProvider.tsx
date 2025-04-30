@@ -1,4 +1,3 @@
-// AppWrapper.tsx
 import React, { FC, ReactNode, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import LoadingScreen from './components/loading/loadingScreen';
@@ -7,7 +6,7 @@ interface Props {
   children: ReactNode;
 }
 
-const AppWrapper: FC<Props> = ({ children }) => {
+const LoadingProvider: FC<Props> = ({ children }) => {
   const location = useLocation();
   const [loading, setLoading] = useState(true);
 
@@ -30,4 +29,4 @@ const AppWrapper: FC<Props> = ({ children }) => {
   );
 };
 
-export default AppWrapper;
+export default LoadingProvider;

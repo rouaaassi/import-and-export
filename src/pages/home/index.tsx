@@ -4,11 +4,13 @@ import { motion } from "framer-motion";
 import PinDropIcon from '@mui/icons-material/PinDrop';
 import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
 import AboutSection from "../about";
+import NavBar from "../../components/navbar/navbar";
 
 export default function Home() {
     return (
         <>
             <Box sx={{ position: "relative", width: "100%", height: "100vh", overflow: "hidden" }}>
+                <NavBar/>
                 <Box
                     sx={{
                         position: "absolute",

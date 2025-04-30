@@ -2,7 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-const Logo = () => (
+const Logo = (sx:any) => (
   <Box sx={{ display: 'flex', alignItems: 'center' }}>
     <img src="/logo3.png" alt="Logo" style={{ width: '100px', height: '100px', marginRight: '1px' }} />
     <Typography
@@ -15,6 +15,7 @@ const Logo = () => (
         fontWeight: 700,
         color: 'inherit',
         textDecoration: 'none',
+        ...sx
       }}
     >
     </Typography>

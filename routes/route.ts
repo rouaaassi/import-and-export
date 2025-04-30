@@ -1,8 +1,8 @@
 const PATH = {
     signup: '/signup',
-    login:'/login',
-    home :'/home',
-    ContactUs:'/contactus',
+    login: '/login',
+    home: '/',
+    ContactUs: '/contactus',
 
 };
 export default PATH;
