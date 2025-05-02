@@ -3,6 +3,7 @@ const PATH = {
     login: '/login',
     home: '/',
     ContactUs: '/contactus',
+    dasboardstaff :'/staff-dashboard',
 
 };
 export default PATH;

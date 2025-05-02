@@ -1,11 +1,9 @@
 import React from "react";
-import SearchBar from "../search/searchAdmin";
+import SearchBar from "../search/search";
 import { Box, Button, Typography } from "@mui/material";
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import { Link } from "react-router";
 import PATH from "../../../../routes/route";
-import Profile from "../profile/main";
-import Greeting from "./Greeting";
+import Profile from "../../../components/profileModel";
 
 export default function Header() {
     return (
@@ -13,7 +11,6 @@ export default function Header() {
             sx={{
                 width: '100%',
                 display: 'flex',
-                position: "fixed",
                 justifyContent: 'center',
                 alignItems: 'center',
                 gap: 5,
@@ -21,7 +18,7 @@ export default function Header() {
                 py: 0.1,
             }}
         >
-            <Greeting />
+
             <SearchBar />
 
             <Button
@@ -29,15 +26,23 @@ export default function Header() {
                 to={PATH.home}
                 variant="outlined"
                 startIcon={<img src="/back.png" style={{ width: 24, height: 24 }} />}
-                sx={{ whiteSpace: 'nowrap', borderRadius: "36px", bgcolor: "#0118D8", color: "#fff" }}
+                sx={{
+                    whiteSpace: 'nowrap', borderRadius: "36px", bgcolor: "#0118D8", color: "#fff",
+                    '&:hover': {
+                        boxShadow: "0px 0px 20px #0118D8",
+                    },
+                }}
             >
                 Back to Home
             </Button>
-            <Button
-                startIcon={<img src="/reminder.png" style={{ width: 24, height: 24 }} />}
-                sx={{ textTransform: "none", color: "#333" }}
-                endIcon={<img src="/Vector.png" style={{ width: 24, height: 24 }} />}>reminder</Button>
-            <Profile />
+            <Box sx={{ display: 'flex' }}>
+                <Button
+                    startIcon={<img src="/reminder.png" style={{ width: 24, height: 24 }} />}
+                    sx={{ textTransform: "none", color: "#333" }}
+                    endIcon={<img src="/vector2.png" style={{ width: 34, height: 34 }} />}>reminder</Button>
+                <Profile />
+            </Box>
         </Box>
+
     );
 }

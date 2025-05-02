@@ -16,7 +16,7 @@ const dropdownItems: { [key: string]: string[] } = {
 
 const directLinks: { [key: string]: string } = {
   Home: PATH.home,
-  'Customer App': PATH.ContactUs,
+  'Customer App': PATH.dasboardstaff,
 };
 
 const MenuItems: FC<MenuItemsProps> = ({ pages }) => {

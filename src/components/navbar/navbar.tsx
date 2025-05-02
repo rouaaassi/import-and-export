@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import {
   Box, Container, Toolbar, IconButton, Drawer,
-  List, ListItemButton, ListItemIcon, ListItemText, Collapse
+  List, ListItemButton, ListItemIcon, ListItemText, Collapse,
+  Button
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
@@ -95,7 +96,7 @@ const NavBar: React.FC = () => {
             <ListItemIcon><ContactMailIcon /></ListItemIcon>
             <ListItemText primary="About Us" />
           </ListItemButton>
-          <ListItemButton component={Link} to={PATH.ContactUs} onClick={toggleDrawer}>
+          <ListItemButton component={Link} to={PATH.dasboardstaff} onClick={toggleDrawer}>
             <ListItemIcon><ContactMailIcon /></ListItemIcon>
             <ListItemText primary="Customer App" />
           </ListItemButton>

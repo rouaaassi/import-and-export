@@ -14,7 +14,7 @@ const SearchBar: FC = () => {
       display="flex"
       alignItems="center"
       justifyContent="center"
-      sx={{ marginTop: 2 }}
+      sx={{ marginTop: '0.1px' }}
     >
       {/* TODO:must to Autocomplete and edit click icon */}
       <TextField
@@ -33,7 +33,7 @@ const SearchBar: FC = () => {
           ),
         }}
         sx={{
-          width:500,
+          width:700,
           '& .MuiOutlinedInput-root': {
             height: '40px',
             borderRadius: '12px',

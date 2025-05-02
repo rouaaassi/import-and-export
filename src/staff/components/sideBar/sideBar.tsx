@@ -6,8 +6,8 @@ import WidgetsIcon from '@mui/icons-material/Widgets';
 import Groups2Icon from '@mui/icons-material/Groups2';
 import StarsRoundedIcon from '@mui/icons-material/StarsRounded';
 import AddLocationAltRoundedIcon from '@mui/icons-material/AddLocationAltRounded';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
+import Profile from "../../../components/profileModel";
 
 export default function SideBar() {
     const [open, setOpen] = useState(false);
@@ -15,7 +15,7 @@ export default function SideBar() {
 
     const pages = [
         { label: "Dashboard", icon: <WidgetsIcon /> },
-        { label: "Parcels", icon: <img src='/parcels.png'style={{ width: 24, height: 24 }}/> },
+        { label: "Parcels", icon: <img src='/parcels.png' style={{ width: 24, height: 24 }} /> },
         { label: "Users", icon: <Groups2Icon /> },
         { label: "Ratings Management", icon: <StarsRoundedIcon /> },
         { label: "Services Centers", icon: <AddLocationAltRoundedIcon /> },
@@ -101,9 +101,10 @@ export default function SideBar() {
                             minWidth: 0,
                             px: open ? 2 : 1
                         }}
-                        startIcon={open ? <AccountCircleIcon /> : null}
+                    // startIcon={open ? <AccountCircleIcon /> : null}
                     >
-                        {open ? "Profile" : <AccountCircleIcon />}
+                        {/* {open ? "Profile" : <AccountCircleIcon />} */}
+                       <Profile/>
                     </Button>
                 </Tooltip>
 
