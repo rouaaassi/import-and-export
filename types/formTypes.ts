@@ -3,7 +3,7 @@ export type FormDataType = {
   phone: string;
   email: string;
   password: string;
-  photo: string;
+  photo?: string;
 };
 
 export type ErrorType = {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import {
   Box, Container, Toolbar, IconButton, Drawer,
   List, ListItemButton, ListItemIcon, ListItemText, Collapse,
@@ -19,7 +19,7 @@ import PATH from '../../../routes/route';
 import SignInModal from '../logIn/SignInModal';
 import SignupModal from '../singUp/signupModal';
 
-const NavBar: React.FC = () => {
+const NavBar: FC = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [pagesOpen, setPagesOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);

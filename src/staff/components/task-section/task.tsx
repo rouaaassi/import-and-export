@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import StaticDate from "./date";
 import { Box, Card, Typography } from "@mui/material";
-import { ArrowBack, ArrowBackIos } from "@mui/icons-material";
+import { ArrowBackIos } from "@mui/icons-material";
 
 const TaskSection: FC = () => {
     const ButtonContent = [' Parcels awaiting a status update', 'Parcels not updated in more than X hours', 'Rejected or problematic parcels']
@@ -17,9 +17,10 @@ const TaskSection: FC = () => {
                 flexDirection: "column",
                 gap: 2,
                 ml: 3,
-                right: 120,
+                right:{ xs : 40 , lg : 120},
                 top: 100,
                 position: "absolute"
+                
             }}
         >
             <Box sx={{

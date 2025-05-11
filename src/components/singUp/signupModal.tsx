@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { Modal, Box } from '@mui/material';
-import { signUpUser } from '../../../api/signUp';
+import { signUpUser } from '../../../api/handlers/signup';
 import SignupButton from './signupButton';
 import SignupForm from './signupForm';
 import SignupSnackbar from '../snackbar';
+import { validateSignUpInputs } from '../../../utils/validations';
+import { ErrorType } from '../../../types/formTypes';
+
 
 const SignupModal = () => {
   const [open, setOpen] = useState(false);
@@ -15,15 +18,32 @@ const SignupModal = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
   const [snackbarSeverity, setSnackbarSeverity] = useState<'success' | 'error'>('error');
+  const [errors, setErrors] = useState<ErrorType>({
+    fullName: '',
+    phone: '',
+    email: '',
+    password: '',
+  });
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const handleSnackbarClose = () => setSnackbarOpen(false);
 
   const handleSubmit = async () => {
+    const formData = { fullName, phone, email, password };
+
+    const isValid = validateSignUpInputs(formData, setErrors);
+
+    if (!isValid) {
+      setSnackbarMessage('Please fix the errors and try again.');
+      setSnackbarSeverity('error');
+      setSnackbarOpen(true);
+      return;
+    }
+
     try {
-      const formData = { fullName, phone, email, password };
       const response = await signUpUser(formData);
+      console.log("Form Data to send:", response);
       setSnackbarMessage('Sign up successfully');
       setSnackbarSeverity('success');
       setSnackbarOpen(true);
@@ -57,18 +77,19 @@ const SignupModal = () => {
           }}
         >
           <SignupForm
-            fullname={fullName}
-            number={phone}
+            fullName={fullName}
+            phone={phone}
             email={email}
             password={password}
             showPassword={showPassword}
             setFullName={setFullName}
-            setNumber={setPhone}
+            setPhone={setPhone}
             setEmail={setEmail}
             setPassword={setPassword}
             setShowPassword={setShowPassword}
             handleClose={handleClose}
             handleSubmit={handleSubmit}
+            errors={errors}
           />
         </Box>
       </Modal>

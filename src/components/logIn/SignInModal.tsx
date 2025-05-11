@@ -15,7 +15,8 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import CloseIcon from '@mui/icons-material/Close';
 import ForgetPassword from './forgetPassword';
-import { loginUser } from '../../../api/signIn';
+import { loginUser } from '../../../api/handlers/signin';
+
 import SnackBar from '../snackbar';
 const SignInModal = () => {
   const [open, setOpen] = useState(false);

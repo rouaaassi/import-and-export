@@ -9,11 +9,25 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import React, { useState } from "react";
+import { ForgetPass } from "../../../api/handlers/forget-password";
 
 export default function ForgetPassword() {
   const [open, setOpen] = useState(false);
+  const [email, setEmail] = useState("");
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const handelforget = async () => {
+    try {
+      const data = { email };
+      const response = await ForgetPass(data);
+      console.log("Reset link sent:", response);
+      handleClose();
+    } catch (error) {
+      console.log("Error sending reset link:", error);
+    }
+  };
 
   const style = {
     position: "absolute",
@@ -28,15 +42,15 @@ export default function ForgetPassword() {
   };
 
   return (
-    <Box >
+    <Box>
       <Link
         onClick={handleOpen}
         component="button"
         variant="body2"
         sx={{
-          display:"flex",
-          justifyContent:'center',
-          paddingLeft:8,
+          display: "flex",
+          justifyContent: "center",
+          paddingLeft: 8,
           color: "gray",
           fontWeight: 500,
           textDecoration: "none",
@@ -45,6 +59,7 @@ export default function ForgetPassword() {
       >
         Forgot your password?
       </Link>
+
       <Modal
         open={open}
         onClose={handleClose}
@@ -52,7 +67,6 @@ export default function ForgetPassword() {
         aria-describedby="forgot-password-description"
       >
         <Box sx={style}>
-          {/* Close Button */}
           <IconButton
             onClick={handleClose}
             sx={{
@@ -89,13 +103,16 @@ export default function ForgetPassword() {
             variant="outlined"
             size="small"
             sx={{ mb: 2 }}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
 
           <Button
             fullWidth
             variant="contained"
             color="primary"
-            sx={{ mb: 1, background:"#0118D8"}}
+            sx={{ mb: 1, background: "#0118D8" }}
+            onClick={handelforget}
           >
             Send Reset Link
           </Button>

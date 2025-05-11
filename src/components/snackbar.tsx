@@ -15,7 +15,7 @@ const SnackBar = ({
     onClose={onClose}
     anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
   >
-    <Alert severity={severity} onClose={onClose} sx={{ width: '100%' }}>
+    <Alert severity={severity} onClose={onClose} sx={{ width: '100%'}}>
       {message}
     </Alert>
   </Snackbar>

@@ -8,17 +8,20 @@ import StarsRoundedIcon from '@mui/icons-material/StarsRounded';
 import AddLocationAltRoundedIcon from '@mui/icons-material/AddLocationAltRounded';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Profile from "../../../components/profileModel";
+import { useNavigate } from "react-router-dom";
+import PATH from "../../../../routes/route";
 
 export default function SideBar() {
     const [open, setOpen] = useState(false);
     const [activePage, setActivePage] = useState("Dashboard");
+    const navigate = useNavigate();
 
     const pages = [
-        { label: "Dashboard", icon: <WidgetsIcon /> },
-        { label: "Parcels", icon: <img src='/parcels.png' style={{ width: 24, height: 24 }} /> },
-        { label: "Users", icon: <Groups2Icon /> },
-        { label: "Ratings Management", icon: <StarsRoundedIcon /> },
-        { label: "Services Centers", icon: <AddLocationAltRoundedIcon /> },
+        { label: "Dashboard", icon: <WidgetsIcon />, href: PATH.dasboardstaff },
+        { label: "Parcels", icon: <img src='/parcels.png' style={{ width: 24, height: 24 }} />, href: PATH.parcels },
+        { label: "Users", icon: <Groups2Icon />, href: PATH.parcels },
+        { label: "Ratings Management", icon: <StarsRoundedIcon />, href: PATH.dasboardstaff },
+        { label: "Services Centers", icon: <AddLocationAltRoundedIcon />, href: PATH.dasboardstaff },
     ];
 
     return (
@@ -59,7 +62,10 @@ export default function SideBar() {
                 {pages.map((page, index) => (
                     <Tooltip title={!open ? page.label : ""} placement="right" key={index}>
                         <Button
-                            onClick={() => setActivePage(page.label)}
+                            onClick={() => {
+                                setActivePage(page.label);
+                                navigate(page.href);
+                            }}
                             sx={{
                                 color: '#fff',
                                 justifyContent: open ? 'flex-start' : 'center',
@@ -101,10 +107,8 @@ export default function SideBar() {
                             minWidth: 0,
                             px: open ? 2 : 1
                         }}
-                    // startIcon={open ? <AccountCircleIcon /> : null}
                     >
-                        {/* {open ? "Profile" : <AccountCircleIcon />} */}
-                       <Profile/>
+                        <Profile />
                     </Button>
                 </Tooltip>
 

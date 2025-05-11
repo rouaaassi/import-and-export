@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import Logo from '../navbar/logo';
 
 function CircularProgressWithLabel(
+  //TODO: must replace this with suitable Design 
   props: CircularProgressProps & { value: number },
 ) {
   return (
