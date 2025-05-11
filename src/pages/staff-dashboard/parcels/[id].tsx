@@ -27,16 +27,16 @@ const ParcelsDetails: FC = () => {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
-    const handleSubmit = async () => {
-        try {
-            const parcelForm = { name, parcel, number, location };
-            const response = await edit(parcelForm);
-            console.log("Parcel updated successfully:", response);
-            handleClose();
-        } catch (error) {
-            console.error("Error occurred while editing parcel:", error);
-        }
-    };
+    // const handleSubmit = async () => {
+    //     try {
+    //         const parcelForm = { name, parcel, number, location };
+    //         const response = await edit(parcelForm);
+    //         console.log("Parcel updated successfully:", response);
+    //         handleClose();
+    //     } catch (error) {
+    //         console.error("Error occurred while editing parcel:", error);
+    //     }
+    // };
 
     return (
         <LayoutDashboard>
@@ -255,7 +255,7 @@ const ParcelsDetails: FC = () => {
 
                         <Button
                             variant="contained"
-                            onClick={handleSubmit}
+                            // onClick={handleSubmit}
                             sx={{
                                 mt: 2,
                                 borderRadius: '30px',
