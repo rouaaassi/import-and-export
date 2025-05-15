@@ -13,7 +13,6 @@ import CentersList from "../../../staff/components/centers/centers-list";
 import TrackParcel from "../../../staff/components/parcels/truck-parcel-status";
 import CloseIcon from '@mui/icons-material/Close';
 import { edit } from '../../../../api/handlers/edit-parcel';
-import StatusUpdateDialog from "./completre-editing";
 
 const ParcelsDetails: FC = () => {
     const [open, setOpen] = useState(false);
@@ -40,7 +39,7 @@ const ParcelsDetails: FC = () => {
 
     return (
         <LayoutDashboard>
-            <Box display="flex" flexDirection="row" gap={10}>
+            <Box display="flex" flexDirection="row" gap={10} sx={{pl:'95px'}}>
                 <Box>
                     {/* Header */}
                     <Box

@@ -17,7 +17,7 @@ export default function StatusUpdateDialog({
   return (
     <Dialog.Root open={open} onOpenChange={(isOpen) => !isOpen && onClose()}>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 bg-black bg-opacity-30 z-40" />
+        <Dialog.Overlay className="fixed inset-0 bg-white bg-opacity-30 z-40"  />
         <Dialog.Content
           className="fixed top-1/2 left-1/2 z-50 w-[90vw] max-w-md -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-xl focus:outline-none"
           aria-describedby="status-update-description"

@@ -20,11 +20,11 @@ const orders = [
 const getStatusIcon = (status: string) => {
   switch (status) {
     case 'Paid':
-      return <span className="text-green-600 flex items-center gap-1">💲 Paid</span>;
+      return <span className="text-green-600 flex items-center gap-1"> Paid</span>;
     case 'in process':
-      return <span className="text-yellow-600 flex items-center gap-1">🔄 in process</span>;
+      return <span className="text-yellow-600 flex items-center gap-1"> in process</span>;
     case 'canceled':
-      return <span className="text-red-600 flex items-center gap-1">⛔ canceled</span>;
+      return <span className="text-red-600 flex items-center gap-1">canceled</span>;
     default:
       return status;
   }
@@ -60,7 +60,7 @@ const OrderTable: FC = () => {
     <Card className="shadow-md">
       <CardContent>
         {/* Tabs & Filter */}
-        <div className="flex flex-wrap gap-4 text-gray-400 text-sm mb-4 font-semibold items-center">
+        <div className="flex flex-wrap gap-4 text-gray-400 text-sm mb-4 font-semibold items-center pl-20">
           <span className="text-[#0118D8] border-b-2 border-[#0118D8] pb-1 cursor-pointer">All Orders</span>
           <span className="cursor-pointer">Paid</span>
           <span className="cursor-pointer">Cancelled</span>

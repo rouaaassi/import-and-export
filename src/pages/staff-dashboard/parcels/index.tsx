@@ -3,6 +3,7 @@ import React, { FC } from "react";
 import OrderTable from "../../../staff/components/orders/ordersTabel";
 import LayoutDashboard from "../../../staff/components/sideBar/layouts/dashboardLayout/layout";
 import AddBoxIcon from '@mui/icons-material/AddBox';
+import StatusUpdateDialog from "./complete-edting";
 
 const Parcels: FC = () => {
     return (
@@ -13,7 +14,10 @@ const Parcels: FC = () => {
                         display: 'flex',
                         flexDirection: 'column',
                         gap: 2,
-                        mb: 2
+                        mb: 2,
+                        pl:3,
+                        position:"relative",
+                        left :'65px'
                     }}
                 >
                     <Typography
@@ -63,7 +67,6 @@ const Parcels: FC = () => {
                     </Button>
                 </Box>
             </Box>
-
             <OrderTable />
         </LayoutDashboard>
     );

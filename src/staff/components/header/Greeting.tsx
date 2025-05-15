@@ -20,7 +20,7 @@ export default function Greeting() {
       <Typography sx={{ color: "#000", fontWeight: 700, fontSize: "30px", pl: 3, lineHeight: "100%", fontFamily: 'unset' }}>
         {getGreeting()} ,user name
       </Typography>
-      <Typography sx={{ color: '#A6A8AA', pl: 3, pt: 1, fontFamily: 'unset', fontWeight: 400 ,fontSize:'15px'}}>Here is a quick overview you can browse through.</Typography>
+      <Typography sx={{ color: '#A6A8AA', pl: 3, pt: 1, pb :2, fontFamily: 'unset', fontWeight: 400 ,fontSize:'15px'}}>Here is a quick overview you can browse through.</Typography>
     </>
   );
 }

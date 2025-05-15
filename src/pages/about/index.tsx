@@ -20,39 +20,42 @@ export default function AboutSection() {
                     position: "relative",
                     left: 0,
                     bgcolor: "#fff",
-                    width: { xs: "90%", md: "50%" },
-                    height: "50vh",
-                    borderTopRightRadius: "30px",
-                    borderBottomRightRadius: "30px",
-                    boxShadow: "10px 0px 30px rgba(0, 0, 0, 0.1)",
-                    padding: "60px",
+                    width: { xs: "95%", md: "65%" },
+                    height: "60vh",
+                    borderTopRightRadius: "50px",
+                    borderBottomRightRadius: "50px",
+                    boxShadow: "15px 0px 40px rgba(0, 0, 0, 0.15)",
+                    padding: { xs: "40px", md: "80px" },
                     display: "flex",
                     flexDirection: "column",
-                    gap: 3,
+                    gap: 4,
                     zIndex: 2,
-                    transition: "box-shadow 0.5s ease",
+                    transition: "all 0.5s ease",
                     "&:hover": {
-                        boxShadow: "20px 0px 40px rgba(0, 0, 0, 0.2)",
+                        boxShadow: "25px 0px 50px rgba(0, 0, 0, 0.25)",
+                        transform: "translateX(10px)",
                     },
                 }}
             >
                 <Button
                     sx={{
-                        width: "250px",
-                        height: "80px",
+                        width: "280px",
+                        height: "90px",
                         textTransform: "none",
                         color: "#fff",
                         bgcolor: "#0118D8",
                         borderRadius: "50px",
-                        fontSize: "28px",
+                        fontSize: "32px",
                         fontWeight: "bold",
                         position: "absolute",
-                        top: "20px",
-                        left: "-50px",
+                        top: "30px",
+                        left: "-60px",
                         transition: "all 0.3s ease",
+                        boxShadow: "0 4px 15px rgba(1, 24, 216, 0.3)",
                         "&:hover": {
                             bgcolor: "#0035cc",
                             transform: "scale(1.05)",
+                            boxShadow: "0 6px 20px rgba(1, 24, 216, 0.4)",
                         },
                     }}
                 >
@@ -62,10 +65,11 @@ export default function AboutSection() {
                 <Typography
                     sx={{
                         color: "#1E1927",
-                        fontSize: "20px",
-                        lineHeight: "1.6",
+                        fontSize: { xs: "18px", md: "24px" },
+                        lineHeight: 1.8,
                         fontWeight: 500,
-                        marginTop: "100px",
+                        marginTop: "120px",
+                        maxWidth: "90%",
                     }}
                 >
                     Streamlined Solutions for Seamless Deliveries.<br />
@@ -81,14 +85,19 @@ export default function AboutSection() {
                 alt="About Us"
                 sx={{
                     position: "absolute",
-                    left: { xs: "40%", md: "35%" },
+                    left: { xs: "35%", md: "30%" },
                     bottom: "5%",
-                    width: { xs: "250px", md: "800px" },
-                    height: { xs: "300px", md: "450px" },
+                    width: { xs: "300px", md: "900px" },
+                    height: { xs: "350px", md: "500px" },
                     zIndex: 1,
                     transition: "all 0.5s ease",
+                    objectFit: "contain",
+                    imageRendering: "high-quality",
+                    filter: "drop-shadow(0 10px 20px rgba(0,0,0,0.2)) brightness(1.05) contrast(1.1)",
+                    transform: "scale(1.02)",
                     "&:hover": {
-                        transform: "scale(1.05) rotate(2deg)",
+                        transform: "scale(1.07) rotate(2deg)",
+                        filter: "drop-shadow(0 15px 30px rgba(0,0,0,0.3)) brightness(1.1) contrast(1.15)",
                     },
                 }}
             />

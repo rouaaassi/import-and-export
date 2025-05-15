@@ -40,7 +40,14 @@ const MenuItems: FC<MenuItemsProps> = ({ pages }) => {
   };
 
   return (
-    <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 4 }}>
+    <Box sx={{ 
+      display: { xs: 'none', md: 'flex' }, 
+      alignItems: 'center', 
+      gap: 4,
+      bgcolor: scrolled ? 'rgba(255, 255, 255, 0.8)' : 'none',
+      backdropFilter: scrolled ? 'blur(8px)' : 'none',
+      transition: 'all 0.3s ease'
+    }}>
       {pages.map((page) => (
         <Box
           key={page}
@@ -50,6 +57,7 @@ const MenuItems: FC<MenuItemsProps> = ({ pages }) => {
               opacity: 1,
               visibility: 'visible',
               transform: 'translateY(0)',
+            
             },
           }}
         >

@@ -31,13 +31,14 @@ export default function SideBar() {
                 height: '100vh',
                 bgcolor: '#0118D8',
                 borderRadius: "36px",
-                position: 'relative',
+                position: 'fixed',
                 top: 0,
                 left: 0,
                 p: 2,
                 boxShadow: 3,
                 zIndex: 1300,
-                transition: 'width 0.3s'
+                transition: 'width 0.3s',
+
             }}
         >
             <IconButton

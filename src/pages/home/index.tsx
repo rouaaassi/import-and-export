@@ -5,6 +5,7 @@ import PinDropIcon from '@mui/icons-material/PinDrop';
 import MiscellaneousServicesIcon from '@mui/icons-material/MiscellaneousServices';
 import AboutSection from "../about";
 import NavBar from "../../components/navbar/navbar";
+import CustomerApp from "../customer-app";
 
 export default function Home() {
     return (
@@ -22,7 +23,7 @@ export default function Home() {
                     }}
                 >
                     <img
-                        src="/heroSection.png"
+                        src="/hero.png"
                         alt="Hero Section"
                         style={{
                             width: "60%",
@@ -135,6 +136,9 @@ export default function Home() {
             </Box>
             <div id="about-section">
                 <AboutSection />
+            </div>
+            <div>
+                <CustomerApp/>
             </div>
         </>
     );

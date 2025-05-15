@@ -13,7 +13,7 @@ const LayoutDashboard : FC <LayoutProps>=({children}) =>{
                 <SideBar />
                 <div className="flex flex-col flex-1">
                     <Header />
-                    <main className="flex-1 p-4 bg-gray-100 overflow-auto">
+                    <main className="flex-1 overflow-auto">
                         {children}
                     </main>
                 </div>

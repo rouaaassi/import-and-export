@@ -18,8 +18,7 @@ const TaskSection: FC = () => {
                 gap: 2,
                 ml: 3,
                 right:{ xs : 40 , lg : 120},
-                top: 100,
-                position: "absolute"
+                position: "relative"
                 
             }}
         >
@@ -35,8 +34,8 @@ const TaskSection: FC = () => {
             <Typography sx={{ fontWeight: 700, fontSize: "20px", mt: 1 }}>
                 Urgent tasks
             </Typography>
-            {ButtonContent.map((text, index) => (
-                <Card sx={{ bgcolor: "#FE4238C4", color: "#fff", p: 2, display: "flex", justifyContent: "space-between", alignItems: "center", borderRadius: "30px", width: "374px", height: "82px", cursor: "pointer", fontWeight: 400, fontSize: '18px' }}>
+            {ButtonContent.map((text, index ) => (
+                <Card key={index} sx={{ bgcolor: "#FE4238C4", color: "#fff", p: 2, display: "flex", justifyContent: "space-between", alignItems: "center", borderRadius: "30px", width: "374px", height: "82px", cursor: "pointer", fontWeight: 400, fontSize: '18px' }}>
                     {text}
                     <ArrowBackIos sx={{ color: "#000", width: "14px", height: "14px" }} />
                 </Card>

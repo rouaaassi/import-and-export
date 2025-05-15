@@ -8,6 +8,7 @@ import Home from '../src/pages/home';
 import AboutSection from '../src/pages/about';
 import Parcels from '../src/pages/staff-dashboard/parcels';
 import ParcelsDetails from '../src/pages/staff-dashboard/parcels/[id]';
+import CustomerApp from '../src/pages/customer-app';
 
 
 const AppRoutes = () => {
@@ -21,6 +22,7 @@ const AppRoutes = () => {
       <Route path='/staff-dashboard' element={<StaffDashboard />} />
       <Route path='/parcels' element={<Parcels />} />
       <Route path='/parcels/:id' element={<ParcelsDetails />} />
+      <Route path='/customer-app' element={<CustomerApp/>}/>
     </Routes>
   )
 }
