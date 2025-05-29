@@ -186,19 +186,6 @@ const FooterButtom = () => {
             >
               <span style={{ marginRight: 8 }}>»</span> Download App
             </Typography>
-            <Typography 
-              onClick={() => scrollToSection('contact-us')}
-              sx={{ 
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                '&:hover': { 
-                  color: '#DDF1FF',
-                  transform: 'translateX(10px)'
-                }
-              }}
-            >
-              <span style={{ marginRight: 8 }}>»</span> Contact us
-            </Typography>
           </Box>
         </Grid>
       </Grid>

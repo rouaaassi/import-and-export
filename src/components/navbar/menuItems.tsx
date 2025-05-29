@@ -16,15 +16,29 @@ const dropdownItems: { [key: string]: string[] } = {
 };
 
 const directLinks: { [key: string]: string } = {
-  Home: PATH.home,
   'Customer App': PATH.dasboardstaff,
 };
 
 const MenuItems: FC<MenuItemsProps> = ({ pages, scrolled = false }) => {
   const handleScrollToSection = (id: string) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
+    if (id === 'contact-us') {
+      const footer = document.getElementById('footer');
+      if (footer) {
+        footer.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
+  const handleServiceItemClick = (item: string) => {
+    if (item === 'Features') {
+      handleScrollToSection('services');
+    } else if (item === 'Service Details') {
+      handleScrollToSection('service-center');
     }
   };
 
@@ -47,7 +61,23 @@ const MenuItems: FC<MenuItemsProps> = ({ pages, scrolled = false }) => {
             },
           }}
         >
-          {page === 'About Us' ? (
+          {page === 'Home' ? (
+            <Button
+              onClick={() => handleScrollToSection('home')}
+              sx={{
+                color: scrolled ? '#0118D8' : '#333',
+                fontWeight: 'bold',
+                fontSize: '16px',
+                textTransform: 'none',
+                transition: 'color 0.3s ease',
+                whiteSpace: 'nowrap',
+                minWidth: 'auto',
+                px: 1
+              }}
+            >
+              {page}
+            </Button>
+          ) : page === 'About Us' ? (
             <Button
               onClick={() => handleScrollToSection('about-section')}
               sx={{
@@ -98,7 +128,12 @@ const MenuItems: FC<MenuItemsProps> = ({ pages, scrolled = false }) => {
             </Button>
           )}
 
-          {dropdownItems[page] && <DropdownMenu items={dropdownItems[page]} />}
+          {dropdownItems[page] && (
+            <DropdownMenu 
+              items={dropdownItems[page]} 
+              onItemClick={page === 'Services' ? handleServiceItemClick : undefined}
+            />
+          )}
         </Box>
       ))}
     </Box>

@@ -14,7 +14,7 @@ export default function Home() {
     return (
         <>
             <Box 
-        id ='home'
+               id ='home'
             sx={{ 
                 position: "relative", 
                 width: "100%", 

@@ -33,6 +33,8 @@ const services = [
 const Footer: FC = () => {
   return (
     <Box
+      component="footer"
+      id ='footer'
       sx={{
         bgcolor: "#0118D8",
         width: "100%",

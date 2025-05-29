@@ -294,7 +294,7 @@ const NavBar: FC = () => {
                   },
                   transition: 'all 0.3s ease-in-out',
                 }}
-                onClick={() => scrollToSection('service-features')}
+                onClick={() => scrollToSection('services')}
               >
                 <ListItemText 
                   primary="Service Features" 
@@ -341,7 +341,7 @@ const NavBar: FC = () => {
           </ListItemButton>
 
           <ListItemButton 
-            onClick={() => scrollToSection('contact-us')}
+            onClick={() => scrollToSection('footer')}
             sx={{
               m: 1,
               borderRadius: '8px',

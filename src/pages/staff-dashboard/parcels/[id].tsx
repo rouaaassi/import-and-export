@@ -12,7 +12,7 @@ import AddressCard from "../../../staff/components/parcels/address-card";
 import CentersList from "../../../staff/components/centers/centers-list";
 import TrackParcel from "../../../staff/components/parcels/truck-parcel-status";
 import CloseIcon from '@mui/icons-material/Close';
-import { edit } from '../../../../api/handlers/edit-parcel';
+// import { edit } from '../../../../api/handlers/edit-parcel';
 
 const ParcelsDetails: FC = () => {
     const [open, setOpen] = useState(false);

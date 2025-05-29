@@ -30,7 +30,8 @@ const CustomerApp: FC = () => {
         id ='download-app'
             sx={{
                 width: "100%",
-                minHeight: "100vh",
+                height: { xs: "auto", md: "90vh" },
+                minHeight: { xs: "100vh", md: "90vh" },
                 position: "relative",
                 bgcolor: "#fff",
                 display: "flex",
@@ -39,12 +40,13 @@ const CustomerApp: FC = () => {
                 py: { xs: 4, md: 8 }
             }}
         >
-            <Container maxWidth="xl">
+            <Container maxWidth="xl" sx={{ height: "100%" }}>
                 <Box sx={{
                     display: "flex",
                     flexDirection: { xs: "column", lg: "row" },
                     gap: { xs: 4, lg: 8 },
-                    alignItems: "flex-start",
+                    alignItems: "center",
+                    height: "100%",
                     position: "relative"
                 }}>
                     {/* Left Section */}
@@ -52,20 +54,21 @@ const CustomerApp: FC = () => {
                         width: { xs: "100%", lg: "50%" },
                         display: "flex",
                         flexDirection: "column",
-                        gap: 4,
-                        height: "100%"
+                        gap: { xs: 2, md: 4 },
+                        height: { xs: "auto", md: "100%" }
                     }}>
                         {/* Header */}
                         <Box sx={{
                             display: "flex",
-                            flexDirection: "row",
-                            gap: 3,
-                            alignItems: "center"
+                            flexDirection: { xs: "column", sm: "row" },
+                            gap: { xs: 2, sm: 3 },
+                            alignItems: { xs: "flex-start", sm: "center" },
+                            height: { xs: "auto", md: "20%" }
                         }}>
                             <PhonelinkIcon sx={{
                                 color: "#0118D8",
-                                width: { xs: "60px", md: "80px" },
-                                height: { xs: "70px", md: "90px" },
+                                width: { xs: "40px", sm: "60px", md: "80px" },
+                                height: { xs: "50px", sm: "70px", md: "90px" },
                                 textShadow: '0 4px 16px #bfcfff'
                             }} />
                             <Box sx={{
@@ -76,7 +79,7 @@ const CustomerApp: FC = () => {
                                 <Typography sx={{
                                     color: "#0118D8",
                                     fontWeight: 700,
-                                    fontSize: { xs: '36px', md: '50px' },
+                                    fontSize: { xs: '28px', sm: '36px', md: '50px' },
                                     lineHeight: "100%",
                                     textShadow: '0 4px 16px #bfcfff'
                                 }}>
@@ -84,7 +87,7 @@ const CustomerApp: FC = () => {
                                 </Typography>
                                 <Typography sx={{
                                     fontWeight: 400,
-                                    fontSize: { xs: '18px', md: '22px' },
+                                    fontSize: { xs: '16px', sm: '18px', md: '22px' },
                                     color: '#222',
                                     textShadow: '0 2px 8px #e3e9f7'
                                 }}>
@@ -97,9 +100,9 @@ const CustomerApp: FC = () => {
                         <Box sx={{
                             display: 'flex',
                             flexDirection: 'column',
-                            gap: 2,
+                            gap: { xs: 1.5, md: 2 },
                             width: '100%',
-                            flex: 1
+                            height: { xs: "auto", md: "80%" }
                         }}>
                             {AppSectionData.map((data, index) => (
                                 <Card
@@ -107,17 +110,18 @@ const CustomerApp: FC = () => {
                                     sx={{
                                         bgcolor: "#fff",
                                         color: "#222",
-                                        p: 3,
+                                        p: { xs: 2, md: 3 },
                                         display: "flex",
                                         justifyContent: "flex-start",
                                         alignItems: "center",
-                                        gap: 2.5,
+                                        gap: { xs: 2, md: 2.5 },
                                         borderRadius: "15px",
                                         width: "100%",
-                                        height: { xs: "80px", md: "90px" },
+                                        height: { xs: "auto", md: "calc(25% - 8px)" },
+                                        minHeight: { xs: "60px", md: "80px" },
                                         cursor: "pointer",
                                         fontWeight: 500,
-                                        fontSize: { xs: '16px', md: '18px' },
+                                        fontSize: { xs: '14px', sm: '16px', md: '18px' },
                                         boxShadow: '0 4px 20px rgba(1, 24, 216, 0.1)',
                                         transition: 'all 0.3s ease',
                                         '&:hover': {
@@ -131,11 +135,13 @@ const CustomerApp: FC = () => {
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
-                                        minWidth: 40
+                                        minWidth: { xs: 32, md: 40 }
                                     }}>
                                         {data.icon}
                                     </Box>
-                                    <Typography>{data.text}</Typography>
+                                    <Typography sx={{
+                                        fontSize: { xs: '14px', sm: '16px', md: '18px' }
+                                    }}>{data.text}</Typography>
                                 </Card>
                             ))}
                         </Box>
@@ -143,45 +149,76 @@ const CustomerApp: FC = () => {
 
                     {/* Right Section */}
                     <Box sx={{
-                        width: { xs: "100%", md: "50%" },
+                        width: { xs: "100%", md: "30%" },
                         display: "flex",
                         flexDirection: "column",
                         alignItems: "center",
-                        gap: 2,
-                        pt: { xs: 4, md: 0 },
+                        gap: { xs: 2, md: 3 },
+                        height: { xs: "auto", md: "20%" },
+                        pt: { xs: 4, md:0.1 },
                     }}>
                         {/* App Image */}
                         <Box sx={{
-                            width: '100%',
+                            width: '50%',
+                            height: { xs: "auto", md: "30%" },
                             display: 'flex',
-                            alignItems: 'flex-start',
-                            justifyContent: 'center',
-                            mb: 2,
+                            alignItems: 'center',
+                            mb : 1
                         }}>
                             <Box
                                 component="img"
                                 src="/app2.png"
                                 alt="Customer App"
                                 sx={{
-                                    width: { xs: 180, sm: 200, md: 620 },
-                                    height: { xs: 220, sm: 240, md: 360 },
+                                    width: { xs: "80%", sm: "60%", md: "90%" },
+                                    maxWidth: "620px",
+                                    height: "auto",
                                     objectFit: 'contain',
                                     zIndex: 2,
                                 }}
                             />
                         </Box>
-                        {/* Description and Download - moved here under the image */}
-                        <Box sx={{ width: '100%', maxWidth: 400, textAlign: 'left', mb: 2 }}>
-                            <Typography sx={{ fontWeight: 400, fontSize: 15, color: '#222', mb: 1 }}>
+                        {/* Description and Download */}
+                        <Box sx={{ 
+                            width: '100%', 
+                            maxWidth: 400, 
+                            textAlign: 'left', 
+                            height: { xs: "auto", md: "40%" },
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'space-between',
+                            gap: { xs: 2, md: 1 },
+                            mt : {md:10}
+                        }}>
+                            <Typography sx={{ 
+                                fontWeight: 400, 
+                                fontSize: { xs: '14px', md: '15px' }, 
+                                color: '#222', 
+                                mb: 0.5
+                            }}>
                                 Enjoy a seamless, integrated experience with our customer-friendly app for tracking shipments, and communicating instantly.
                             </Typography>
-                            <Typography sx={{ color: "#0118D8", fontWeight: 700, fontSize: 20, mb: 0.5 }}>
+                            <Typography sx={{ 
+                                color: "#0118D8", 
+                                fontWeight: 700, 
+                                fontSize: { xs: '18px', md: '20px' }, 
+                                mb: 0
+                            }}>
                                 Download the App
                             </Typography>
-                            <Typography sx={{ fontSize: 14, mb: 2 }}>
+                            <Typography sx={{ 
+                                fontSize: { xs: '12px', md: '14px' }, 
+                                mb: 1 
+                            }}>
                                 <span style={{ color: "#d53434", cursor: "pointer" }}>Click here</span> to download the employee app
                             </Typography>
-                            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, flexWrap: 'wrap', mt: 2, justifyContent: 'flex-start' }}>
+                            <Box sx={{ 
+                                display: 'flex', 
+                                flexDirection: { xs: 'column', sm: 'row' }, 
+                                gap: 1, 
+                                justifyContent: 'flex-start',
+                                width: '100%'
+                            }}>
                                 <Button
                                     startIcon={<img src="/play.png" style={{ width: 32, height: 32, marginRight: 4 }} alt="App Store" />}
                                     sx={{
@@ -190,10 +227,10 @@ const CustomerApp: FC = () => {
                                         borderRadius: '18px',
                                         border: "2px solid #0118D8",
                                         fontWeight: 600,
-                                        fontSize: 18,
-                                        px: 3,
-                                        py: 1.5,
-                                        minWidth: 170,
+                                        fontSize: { xs: '16px', md: '18px' },
+                                        px: 2,
+                                        py: 0.5,
+                                        width: { xs: '100%', sm: 'auto' },
                                         bgcolor: '#fff',
                                         boxShadow: '0 2px 8px rgba(1,24,216,0.07)',
                                         transition: 'all 0.2s',
@@ -205,8 +242,8 @@ const CustomerApp: FC = () => {
                                     }}
                                 >
                                     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                                        <Typography sx={{ fontSize: 11, color: '#888', fontWeight: 500 }}>13Download</Typography>
-                                        <Typography sx={{ fontSize: 20, fontWeight: 700 }}>App Store</Typography>
+                                        <Typography sx={{ fontSize: { xs: '10px', md: '11px' }, color: '#888', fontWeight: 500 }}>13Download</Typography>
+                                        <Typography sx={{ fontSize: { xs: '16px', md: '20px' }, fontWeight: 700 }}>App Store</Typography>
                                     </Box>
                                 </Button>
                                 <Button
@@ -217,10 +254,10 @@ const CustomerApp: FC = () => {
                                         borderRadius: '18px',
                                         border: "2px solid #0118D8",
                                         fontWeight: 600,
-                                        fontSize: 18,
-                                        px: 3,
-                                        py: 1.5,
-                                        minWidth: 170,
+                                        fontSize: { xs: '16px', md: '18px' },
+                                        px: 2,
+                                        py: 0.5,
+                                        width: { xs: '100%', sm: 'auto' },
                                         bgcolor: '#fff',
                                         boxShadow: '0 2px 8px rgba(1,24,216,0.07)',
                                         transition: 'all 0.2s',
@@ -232,8 +269,8 @@ const CustomerApp: FC = () => {
                                     }}
                                 >
                                     <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                                        <Typography sx={{ fontSize: 11, color: '#888', fontWeight: 500 }}>Https://App.com</Typography>
-                                        <Typography sx={{ fontSize: 20, fontWeight: 700 }}>Google Play</Typography>
+                                        <Typography sx={{ fontSize: { xs: '10px', md: '11px' }, color: '#888', fontWeight: 500 }}>Https://App.com</Typography>
+                                        <Typography sx={{ fontSize: { xs: '16px', md: '20px' }, fontWeight: 700 }}>Google Play</Typography>
                                     </Box>
                                 </Button>
                             </Box>
