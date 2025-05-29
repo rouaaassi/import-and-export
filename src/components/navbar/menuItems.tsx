@@ -98,7 +98,7 @@ const MenuItems: FC<MenuItemsProps> = ({ pages, scrolled = false }) => {
               component={Link}
               to={directLinks[page]}
               sx={{
-                color: scrolled ? '#0118D8' : '#333',
+                color: scrolled ? '#0118D8' : '#fff',
                 fontWeight: 'bold',
                 fontSize: '16px',
                 textTransform: 'none',
@@ -114,7 +114,7 @@ const MenuItems: FC<MenuItemsProps> = ({ pages, scrolled = false }) => {
             <Button
               endIcon={<KeyboardArrowDownIcon />}
               sx={{
-                color: scrolled ? '#0118D8' : '#333',
+                color: scrolled ? '#0118D8' : '#fff',
                 fontWeight: 'bold',
                 fontSize: '16px',
                 textTransform: 'none',

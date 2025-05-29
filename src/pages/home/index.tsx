@@ -11,6 +11,14 @@ import ServiceSection from './ServicesSection'
 import OurVision from "./vision";
 
 export default function Home() {
+    const handleScrollToSection =(id:string)=>{
+        if(id==='services'){
+            const serviceSection = document.getElementById('services')
+            if (serviceSection) {
+                serviceSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    }
     return (
         <>
             <Box 
@@ -110,6 +118,7 @@ export default function Home() {
                                 width: "100%"
                             }}>
                                 <Button
+                                    onClick={() => handleScrollToSection('services')}
                                     sx={{
                                         borderRadius: '36px',
                                         textTransform: 'none',
