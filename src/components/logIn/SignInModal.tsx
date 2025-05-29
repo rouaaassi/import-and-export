@@ -18,7 +18,12 @@ import ForgetPassword from './forgetPassword';
 import { loginUser } from '../../../api/handlers/signin';
 
 import SnackBar from '../snackbar';
-const SignInModal = () => {
+
+interface SignInModalProps {
+  scrolled?: boolean;
+}
+
+const SignInModal: React.FC<SignInModalProps> = ({ scrolled }) => {
   const [open, setOpen] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');

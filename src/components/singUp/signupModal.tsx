@@ -7,8 +7,11 @@ import SignupSnackbar from '../snackbar';
 import { validateSignUpInputs } from '../../../utils/validations';
 import { ErrorType } from '../../../types/formTypes';
 
+interface SignupModalProps {
+  scrolled?: boolean;
+}
 
-const SignupModal = () => {
+const SignupModal: React.FC<SignupModalProps> = ({ scrolled }) => {
   const [open, setOpen] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');

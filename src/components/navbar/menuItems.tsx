@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import { Box, Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -7,6 +7,7 @@ import PATH from '../../../routes/route';
 
 interface MenuItemsProps {
   pages: string[];
+  scrolled?: boolean;
 }
 
 const dropdownItems: { [key: string]: string[] } = {
@@ -19,19 +20,7 @@ const directLinks: { [key: string]: string } = {
   'Customer App': PATH.dasboardstaff,
 };
 
-const MenuItems: FC<MenuItemsProps> = ({ pages }) => {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const offset = window.scrollY;
-      setScrolled(offset > 100);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
+const MenuItems: FC<MenuItemsProps> = ({ pages, scrolled = false }) => {
   const handleScrollToSection = (id: string) => {
     const section = document.getElementById(id);
     if (section) {
@@ -41,12 +30,10 @@ const MenuItems: FC<MenuItemsProps> = ({ pages }) => {
 
   return (
     <Box sx={{ 
-      display: { xs: 'none', md: 'flex' }, 
+      display: 'flex', 
       alignItems: 'center', 
       gap: 4,
-      bgcolor: scrolled ? 'rgba(255, 255, 255, 0.8)' : 'none',
-      backdropFilter: scrolled ? 'blur(8px)' : 'none',
-      transition: 'all 0.3s ease'
+      whiteSpace: 'nowrap'
     }}>
       {pages.map((page) => (
         <Box
@@ -57,7 +44,6 @@ const MenuItems: FC<MenuItemsProps> = ({ pages }) => {
               opacity: 1,
               visibility: 'visible',
               transform: 'translateY(0)',
-            
             },
           }}
         >
@@ -70,6 +56,9 @@ const MenuItems: FC<MenuItemsProps> = ({ pages }) => {
                 fontSize: '16px',
                 textTransform: 'none',
                 transition: 'color 0.3s ease',
+                whiteSpace: 'nowrap',
+                minWidth: 'auto',
+                px: 1
               }}
             >
               {page}
@@ -79,13 +68,14 @@ const MenuItems: FC<MenuItemsProps> = ({ pages }) => {
               component={Link}
               to={directLinks[page]}
               sx={{
-                color: scrolled
-                  ? (page === 'Customer App' ? '#0118D8' : '#0118D8')
-                  : (page === 'Customer App' ? '#fff' : '#333'),
+                color: scrolled ? '#0118D8' : '#333',
                 fontWeight: 'bold',
                 fontSize: '16px',
                 textTransform: 'none',
                 transition: 'color 0.3s ease',
+                whiteSpace: 'nowrap',
+                minWidth: 'auto',
+                px: 1
               }}
             >
               {page}
@@ -94,11 +84,14 @@ const MenuItems: FC<MenuItemsProps> = ({ pages }) => {
             <Button
               endIcon={<KeyboardArrowDownIcon />}
               sx={{
-                color: scrolled ? '#0118D8' : '#fff',
+                color: scrolled ? '#0118D8' : '#333',
                 fontWeight: 'bold',
                 fontSize: '16px',
                 textTransform: 'none',
                 transition: 'color 0.3s ease',
+                whiteSpace: 'nowrap',
+                minWidth: 'auto',
+                px: 1
               }}
             >
               {page}

@@ -6,14 +6,32 @@ import { useEffect, useState } from 'react';
 import Logo from '../navbar/logo';
 
 function CircularProgressWithLabel(
-  //TODO: must replace this with suitable Design 
   props: CircularProgressProps & { value: number },
 ) {
   return (
-    <Box sx={{ position: 'relative', display: 'inline-flex', flexDirection: 'row', alignItems: 'center' }}>
+    <Box sx={{ 
+      position: 'relative', 
+      display: 'flex', 
+      flexDirection: 'column', 
+      alignItems: 'center',
+      gap: 4
+    }}>
       <Logo />
-      <Box sx={{ position: 'relative', display: 'inline-flex', mt: 2 }}>
-        <CircularProgress variant="determinate" {...props} />
+      <Box sx={{ 
+        position: 'relative', 
+        display: 'flex', 
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: 2
+      }}>
+        <CircularProgress 
+          variant="determinate" 
+          {...props} 
+          sx={{
+            color: '#0118D8',
+            filter: 'drop-shadow(0 2px 4px rgba(1, 24, 216, 0.2))'
+          }}
+        />
         <Box
           sx={{
             position: 'absolute',
@@ -29,21 +47,36 @@ function CircularProgressWithLabel(
           <Typography
             variant="caption"
             component="div"
-            sx={{ color: 'text.secondary' }}
+            sx={{ 
+              color: '#0118D8',
+              fontWeight: 600,
+              fontSize: '14px'
+            }}
           >{`${Math.round(props.value)}%`}</Typography>
         </Box>
       </Box>
+      <Typography
+        sx={{
+          color: '#666',
+          fontSize: '16px',
+          fontWeight: 500,
+          textAlign: 'center'
+        }}
+      >
+        Loading your experience...
+      </Typography>
     </Box>
   );
 }
 
 export default function LoadingScreen() {
-  const [progress, setProgress] = useState(10);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setProgress((prevProgress) => (prevProgress >= 100 ? 0 : prevProgress + 10));
     }, 800);
+
     return () => {
       clearInterval(timer);
     };
@@ -55,13 +88,13 @@ export default function LoadingScreen() {
         position: 'fixed',
         top: 0,
         left: 0,
-        width: '100vw',
-        height: '100vh',
+        right: 0,
+        bottom: 0,
         display: 'flex',
-        justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#fff',
-        zIndex: 9999,
+        justifyContent: 'center',
+        bgcolor: '#fff',
+        zIndex: 9999
       }}
     >
       <CircularProgressWithLabel value={progress} />

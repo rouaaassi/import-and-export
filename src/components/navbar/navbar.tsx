@@ -1,8 +1,7 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import {
   Box, Container, Toolbar, IconButton, Drawer,
   List, ListItemButton, ListItemIcon, ListItemText, Collapse,
-  Button
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
@@ -23,37 +22,90 @@ const NavBar: FC = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [pagesOpen, setPagesOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      setScrolled(offset > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleDrawer = () => setOpenMenu(!openMenu);
 
   return (
-    <Box position="fixed" sx={{ width: "100%", top: 0, zIndex: 1000 }}>  
-        <Container maxWidth="xl">
-      <Toolbar disableGutters sx={{ justifyContent: 'space-between', gap: 2 }}>
-        <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-start' }}>
-          <Logo />
-        </Box>
+    <Box 
+      position="fixed" 
+      sx={{ 
+        width: "100%", 
+        top: 0, 
+        zIndex: 1000,
+        transition: 'all 0.3s ease-in-out',
+        bgcolor: scrolled ? '#fff' : 'transparent',
+        boxShadow: scrolled ? '0 2px 10px rgba(0,0,0,0.1)' : 'none',
+        minHeight: { xs: '64px', lg: '70px' }
+      }}
+    >  
+      <Container maxWidth="xl">
+        <Toolbar 
+          disableGutters 
+          sx={{ 
+            justifyContent: 'space-between', 
+            gap: 2,
+          }}
+        >
+          <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-start' }}>
+            <Logo />
+          </Box>
 
-        <Box sx={{ flex: 2, display: { xs: 'none', md: 'flex' }, justifyContent: 'center' }}>
-          <MenuItems pages={['Home', 'About Us', 'Services', 'Customer App', 'Contact Us']} />
-        </Box>
+          <Box sx={{ 
+            flex: 2, 
+            display: { xs: 'none', lg: 'flex' }, 
+            justifyContent: 'center',
+            gap: 4
+          }}>
+            <MenuItems pages={['Home', 'About Us', 'Services', 'Customer App', 'Contact Us']} scrolled={scrolled} />
+          </Box>
 
-        <Box sx={{ flex: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-end', gap: 2 }}>
-          <SignInModal />
-          <SignupModal />
-        </Box>
+          <Box sx={{ 
+            flex: 1, 
+            display: { xs: 'none', lg: 'flex' }, 
+            justifyContent: 'flex-end', 
+            gap: 2 
+          }}>
+            <SignInModal scrolled={scrolled} />
+            <SignupModal scrolled={scrolled} />
+          </Box>
 
-        <Box sx={{ display: { xs: 'flex', md: 'none' }, alignItems: 'center', gap: 2 }}>
-          <SignInModal />
-          <SignupModal />
-          <IconButton onClick={toggleDrawer} sx={{ color: '#333' }}>
-            <MenuIcon />
-          </IconButton>
-        </Box>
-      </Toolbar>
-    </Container>
+          <Box sx={{ 
+            display: { xs: 'flex', lg: 'none' }, 
+            alignItems: 'center', 
+            gap: 2 
+          }}>
+            <SignInModal scrolled={scrolled} />
+            <SignupModal scrolled={scrolled} />
+            <IconButton onClick={toggleDrawer} sx={{ color: '#333' }}>
+              <MenuIcon />
+            </IconButton>
+          </Box>
+        </Toolbar>
+      </Container>
 
-      <Drawer anchor="right" open={openMenu} onClose={toggleDrawer}>
+      <Drawer
+        anchor="right"
+        open={openMenu}
+        onClose={toggleDrawer}
+        sx={{
+          '& .MuiDrawer-paper': {
+            width: 280,
+            boxSizing: 'border-box',
+            bgcolor: '#fff',
+          },
+        }}
+      >
         <List sx={{ width: 250 }}>
           <ListItemButton component={Link} to={PATH.home} onClick={toggleDrawer}>
             <ListItemIcon><HomeIcon /></ListItemIcon>
