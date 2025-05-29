@@ -13,7 +13,9 @@ import OurVision from "./vision";
 export default function Home() {
     return (
         <>
-            <Box sx={{ 
+            <Box 
+        id ='home'
+            sx={{ 
                 position: "relative", 
                 width: "100%", 
                 minHeight: "100vh",

@@ -1,10 +1,10 @@
 import { Box, Button, Typography, Container } from "@mui/material";
 import React, { FC } from "react";
-import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
+// import FlightTakeoffIcon from '@mui/icons-material/FlightTakeoff';
 
 const Service: FC = () => {
   return (
-    <Box sx={{ width: "100%", bgcolor: "#F5F7FA", py: { xs: 6, md: 10 }, position: 'relative' }}>
+    <Box id ='service-center' sx={{ width: "100%", bgcolor: "#F5F7FA", py: { xs: 6, md: 10 }, position: 'relative' }}>
       <Container maxWidth="xl" sx={{ position: 'relative' }}>
         <Box sx={{
           display: "flex",
@@ -69,38 +69,6 @@ const Service: FC = () => {
                 Why us?
               </Button>
               {/* Zigzag line and plane icon */}
-              <Box
-                sx={{
-                  position: 'absolute',
-                  left: { xs: 160, sm: 200, md: 190 },
-                  top: { xs: 24, md: 60 },
-                  width: { xs: 340, sm: 520, md: 720 },
-                  height: { xs: 140, md: 200 },
-                  pointerEvents: 'none',
-                  zIndex: 1,
-                }}
-              >
-                <svg width="100%" height="100%" style={{ position: 'absolute', left: 0, top: 0 }}>
-                  <polyline
-                    points="0,0 60,40 120,0 180,40 240,0 300,40 360,0 420,40 480,0 540,40 600,0 660,40 720,10"
-                    fill="none"
-                    stroke="#0118D8"
-                    strokeWidth="3"
-                    strokeDasharray="8,7"
-                  />
-                </svg>
-                <FlightTakeoffIcon sx={{
-                  position: 'absolute',
-                  right: -18,
-                  top: -18,
-                  fontSize: 38,
-                  color: '#0118D8',
-                  bgcolor: '#fff',
-                  borderRadius: '50%',
-                  boxShadow: 2,
-                  p: 0.5,
-                }} />
-              </Box>
             </Box>
           </Box>
 

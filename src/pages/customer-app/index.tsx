@@ -27,6 +27,7 @@ const AppSectionData = [
 const CustomerApp: FC = () => {
     return (
         <Box
+        id ='download-app'
             sx={{
                 width: "100%",
                 minHeight: "100vh",

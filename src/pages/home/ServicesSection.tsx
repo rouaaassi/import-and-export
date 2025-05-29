@@ -5,7 +5,7 @@ import Icon from '@mui/material/Icon';
 
 const ServicesSection: FC = () => {
   return (
-    <Box sx={{ py: 4, background: '#fff' }}>
+    <Box id='services' sx={{ py: 4, background: '#fff' }}>
       <Box sx={{ display: 'flex', alignItems: 'center', mb: 4, ml: 5 }}>
         <img src="/service2.png" style={{ width: 40, height: 40, marginRight: 1 }} alt="service icon" />
         <Typography variant="h5" sx={{ fontWeight: 700, ml: 2, color: '#0118D8', fontSize: '40px', lineHeight: '100%' }}>
