@@ -2,25 +2,24 @@ import React, { FC, useState, useEffect } from 'react';
 import {
   Box, Container, Toolbar, IconButton, Drawer,
   List, ListItemButton, ListItemIcon, ListItemText, Collapse,
+  Typography,
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import HomeIcon from '@mui/icons-material/Home';
 import InfoIcon from '@mui/icons-material/Info';
 import BuildIcon from '@mui/icons-material/Build';
-import ContactMailIcon from '@mui/icons-material/ContactMail';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
+import DownloadIcon from '@mui/icons-material/Download';
+import PhoneIcon from '@mui/icons-material/Phone';
 
 import Logo from './logo';
 import MenuItems from './menuItems';
-import { Link } from 'react-router-dom';
-import PATH from '../../../routes/route';
 import SignInModal from '../logIn/SignInModal';
 import SignupModal from '../singUp/signupModal';
 
 const NavBar: FC = () => {
   const [openMenu, setOpenMenu] = useState(false);
-  const [pagesOpen, setPagesOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -35,6 +34,14 @@ const NavBar: FC = () => {
   }, []);
 
   const toggleDrawer = () => setOpenMenu(!openMenu);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      toggleDrawer();
+    }
+  };
 
   return (
     <Box 
@@ -85,8 +92,6 @@ const NavBar: FC = () => {
             alignItems: 'center', 
             gap: 2 
           }}>
-            <SignInModal scrolled={scrolled} />
-            <SignupModal scrolled={scrolled} />
             <IconButton onClick={toggleDrawer} sx={{ color: '#333' }}>
               <MenuIcon />
             </IconButton>
@@ -100,57 +105,273 @@ const NavBar: FC = () => {
         onClose={toggleDrawer}
         sx={{
           '& .MuiDrawer-paper': {
-            width: 280,
+            width: 300,
             boxSizing: 'border-box',
-            bgcolor: '#fff',
+            background: 'rgba(255, 255, 255, 0.85)',
+            backdropFilter: 'blur(10px)',
+            boxShadow: '-4px 0 20px rgba(0,0,0,0.1)',
+            borderLeft: '1px solid rgba(255, 255, 255, 0.3)',
           },
         }}
       >
-        <List sx={{ width: 250 }}>
-          <ListItemButton component={Link} to={PATH.home} onClick={toggleDrawer}>
-            <ListItemIcon><HomeIcon /></ListItemIcon>
-            <ListItemText primary="Home" />
+        <Box sx={{ 
+          p: 2, 
+          background: 'rgba(248, 249, 250, 0.8)',
+          backdropFilter: 'blur(10px)',
+          borderBottom: '1px solid rgba(255, 255, 255, 0.3)',
+          boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
+        }}>
+          <Typography variant="h6" sx={{ 
+            fontWeight: 600, 
+            color: '#333',
+            textShadow: '0 1px 2px rgba(0,0,0,0.1)',
+          }}>
+            Menu
+          </Typography>
+        </Box>
+
+        <List sx={{ width: '100%', pt: 2 }}>
+          <Box sx={{ 
+            display: { xs: 'flex', lg: 'none' }, 
+            flexDirection: 'column',
+            gap: 1,
+            px: 2,
+            mb: 2
+          }}>
+            <SignInModal scrolled={scrolled} />
+            <SignupModal scrolled={scrolled} />
+          </Box>
+
+          <ListItemButton 
+            onClick={() => scrollToSection('home')}
+            sx={{
+              m: 1,
+              borderRadius: '8px',
+              border: '1px solid rgba(255, 255, 255, 0.3)',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+              '&:hover': {
+                background: 'rgba(248, 249, 250, 0.8)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.5)',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                transform: 'translateY(-1px)',
+                '& .MuiListItemIcon-root': {
+                  color: '#1976d2',
+                },
+                '& .MuiListItemText-primary': {
+                  color: '#1976d2',
+                },
+              },
+              transition: 'all 0.3s ease-in-out',
+            }}
+          >
+            <ListItemIcon sx={{ minWidth: 40 }}>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText 
+              primary="Home" 
+              primaryTypographyProps={{
+                sx: { fontWeight: 500 }
+              }}
+            />
           </ListItemButton>
 
-          <ListItemButton onClick={() => setPagesOpen(!pagesOpen)}>
-            <ListItemIcon><InfoIcon /></ListItemIcon>
-            <ListItemText primary="Contact Us" />
-            {pagesOpen ? <ExpandLess /> : <ExpandMore />}
+          <ListItemButton 
+            onClick={() => scrollToSection('about-section')}
+            sx={{
+              m: 1,
+              borderRadius: '8px',
+              border: '1px solid rgba(255, 255, 255, 0.3)',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+              '&:hover': {
+                background: 'rgba(248, 249, 250, 0.8)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.5)',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                transform: 'translateY(-1px)',
+                '& .MuiListItemIcon-root': {
+                  color: '#1976d2',
+                },
+                '& .MuiListItemText-primary': {
+                  color: '#1976d2',
+                },
+              },
+              transition: 'all 0.3s ease-in-out',
+            }}
+          >
+            <ListItemIcon sx={{ minWidth: 40 }}>
+              <InfoIcon />
+            </ListItemIcon>
+            <ListItemText 
+              primary="About Us" 
+              primaryTypographyProps={{
+                sx: { fontWeight: 500 }
+              }}
+            />
           </ListItemButton>
-          <Collapse in={pagesOpen} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4 }} component={Link} to={PATH.ContactUs} onClick={toggleDrawer}>
-                <ListItemText primary="Our Team" />
-              </ListItemButton>
-              <ListItemButton sx={{ pl: 4 }} component={Link} to={PATH.ContactUs} onClick={toggleDrawer}>
-                <ListItemText primary="Directed " />
-              </ListItemButton>
-            </List>
-          </Collapse>
 
-          <ListItemButton onClick={() => setServicesOpen(!servicesOpen)}>
-            <ListItemIcon><BuildIcon /></ListItemIcon>
-            <ListItemText primary="Services" />
+          <ListItemButton 
+            onClick={() => setServicesOpen(!servicesOpen)}
+            sx={{
+              m: 1,
+              borderRadius: '8px',
+              border: '1px solid rgba(255, 255, 255, 0.3)',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+              '&:hover': {
+                background: 'rgba(248, 249, 250, 0.8)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.5)',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                transform: 'translateY(-1px)',
+                '& .MuiListItemIcon-root': {
+                  color: '#1976d2',
+                },
+                '& .MuiListItemText-primary': {
+                  color: '#1976d2',
+                },
+              },
+              transition: 'all 0.3s ease-in-out',
+            }}
+          >
+            <ListItemIcon sx={{ minWidth: 40 }}>
+              <BuildIcon />
+            </ListItemIcon>
+            <ListItemText 
+              primary="Services" 
+              primaryTypographyProps={{
+                sx: { fontWeight: 500 }
+              }}
+            />
             {servicesOpen ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
+
           <Collapse in={servicesOpen} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4 }} component={Link} to={PATH.ContactUs} onClick={toggleDrawer}>
-                <ListItemText primary="Features" />
+              <ListItemButton 
+                sx={{ 
+                  pl: 4,
+                  m: 1,
+                  borderRadius: '8px',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+                  '&:hover': {
+                    background: 'rgba(248, 249, 250, 0.8)',
+                    backdropFilter: 'blur(10px)',
+                    border: '1px solid rgba(255, 255, 255, 0.5)',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                    transform: 'translateY(-1px)',
+                    '& .MuiListItemText-primary': {
+                      color: '#1976d2',
+                    },
+                  },
+                  transition: 'all 0.3s ease-in-out',
+                }}
+                onClick={() => scrollToSection('service-center')}
+              >
+                <ListItemText 
+                  primary="Service Center" 
+                  primaryTypographyProps={{
+                    sx: { fontWeight: 500 }
+                  }}
+                />
               </ListItemButton>
-              <ListItemButton sx={{ pl: 4 }} component={Link} to={PATH.ContactUs} onClick={toggleDrawer}>
-                <ListItemText primary="Service Details" />
+              <ListItemButton 
+                sx={{ 
+                  pl: 4,
+                  m: 1,
+                  borderRadius: '8px',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+                  '&:hover': {
+                    background: 'rgba(248, 249, 250, 0.8)',
+                    backdropFilter: 'blur(10px)',
+                    border: '1px solid rgba(255, 255, 255, 0.5)',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                    transform: 'translateY(-1px)',
+                    '& .MuiListItemText-primary': {
+                      color: '#1976d2',
+                    },
+                  },
+                  transition: 'all 0.3s ease-in-out',
+                }}
+                onClick={() => scrollToSection('service-features')}
+              >
+                <ListItemText 
+                  primary="Service Features" 
+                  primaryTypographyProps={{
+                    sx: { fontWeight: 500 }
+                  }}
+                />
               </ListItemButton>
             </List>
           </Collapse>
 
-          <ListItemButton component={Link} to={PATH.ContactUs} onClick={toggleDrawer}>
-            <ListItemIcon><ContactMailIcon /></ListItemIcon>
-            <ListItemText primary="About Us" />
+          <ListItemButton 
+            onClick={() => scrollToSection('download-app')}
+            sx={{
+              m: 1,
+              borderRadius: '8px',
+              border: '1px solid rgba(255, 255, 255, 0.3)',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+              '&:hover': {
+                background: 'rgba(248, 249, 250, 0.8)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.5)',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                transform: 'translateY(-1px)',
+                '& .MuiListItemIcon-root': {
+                  color: '#1976d2',
+                },
+                '& .MuiListItemText-primary': {
+                  color: '#1976d2',
+                },
+              },
+              transition: 'all 0.3s ease-in-out',
+            }}
+          >
+            <ListItemIcon sx={{ minWidth: 40 }}>
+              <DownloadIcon />
+            </ListItemIcon>
+            <ListItemText 
+              primary="Download App" 
+              primaryTypographyProps={{
+                sx: { fontWeight: 500 }
+              }}
+            />
           </ListItemButton>
-          <ListItemButton component={Link} to={PATH.dasboardstaff} onClick={toggleDrawer}>
-            <ListItemIcon><ContactMailIcon /></ListItemIcon>
-            <ListItemText primary="Customer App" />
+
+          <ListItemButton 
+            onClick={() => scrollToSection('contact-us')}
+            sx={{
+              m: 1,
+              borderRadius: '8px',
+              border: '1px solid rgba(255, 255, 255, 0.3)',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+              '&:hover': {
+                background: 'rgba(248, 249, 250, 0.8)',
+                backdropFilter: 'blur(10px)',
+                border: '1px solid rgba(255, 255, 255, 0.5)',
+                boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                transform: 'translateY(-1px)',
+                '& .MuiListItemIcon-root': {
+                  color: '#1976d2',
+                },
+                '& .MuiListItemText-primary': {
+                  color: '#1976d2',
+                },
+              },
+              transition: 'all 0.3s ease-in-out',
+            }}
+          >
+            <ListItemIcon sx={{ minWidth: 40 }}>
+              <PhoneIcon />
+            </ListItemIcon>
+            <ListItemText 
+              primary="Contact Us" 
+              primaryTypographyProps={{
+                sx: { fontWeight: 500 }
+              }}
+            />
           </ListItemButton>
         </List>
       </Drawer>
