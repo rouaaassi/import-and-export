@@ -3,102 +3,129 @@ import {
     Box,
     Typography,
     Container,
-    useTheme,
-    useMediaQuery
+    Paper
 } from "@mui/material";
 import Greeting from "../../../staff/components/header/Greeting";
 import CardsContent from "../../../staff/components/cards/cards-content";
 import UserList from "../../../staff/components/users-list";
 import CentersList from "../../../staff/components/centers/centers-list";
-import TaskSection from "../../../staff/components/task-section/task";
 import LayoutDashboard from "../../../staff/components/sideBar/layouts/dashboardLayout/layout";
 
 export default function StaffDashboard() {
-    const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-
     return (
         <LayoutDashboard>
-            <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
+            <Box sx={{ 
+                display: "flex", 
+                flexDirection: "column", 
+                width: "100%",
+                bgcolor: "#F5F7FA",
+                minHeight: "100vh"
+            }}>
                 <Container
                     maxWidth="xl"
-                    sx={{ py: 0, position: "relative", left: "85px",pt:5 }}
+                    sx={{ 
+                        py: 4,
+                        position: "relative",
+                        left: { xs: 0, md: "85px" },
+                        px: { xs: 2, md: 4 }
+                    }}
                 >
-                    <Box>
+                    {/* Header Section */}
+                    <Box sx={{ mb: 4 }}>
                         <Greeting />
                     </Box>
 
+                    {/* Main Content */}
                     <Box
                         sx={{
                             display: "flex",
-                            flexDirection: isMobile ? "column" : "row",
-                            width: "100%",
-                            gap: {xs:5 , md: 5, lg:20}
+                            flexDirection: "column",
+                            gap: 4
                         }}
                     >
-                        <Box sx={{display:"flex" , gap:4,flexDirection:'column'}}>
-                            <Typography
-                                variant="h4"
-                                sx={{
-                                    fontWeight: 700,
-                                    fontSize: { xs: "1.5rem", md: "2rem" },
-                                    color: "text.primary",
-                                    pl: 3
-                                }}
-                            >
-                                Dashboard Overview
-                            </Typography>
-
-                            <CardsContent />
-
-                            <Typography
-                                variant="h4"
-                                sx={{
-                                    fontWeight: 700,
-                                    fontSize: { xs: "1.5rem", md: "2rem" },
-                                    color: "text.primary",
-                                    pl: 3
-                                }}
-                            >
-                                See all users
-                            </Typography>
-                            <Box
-                                sx={{
-                                    overflowX: "auto",
-                                    width: "100%",
-                                    pl: 3,
-                                    "&::-webkit-scrollbar": {
-                                        height: "8px"
-                                    },
-                                    "&::-webkit-scrollbar-track": {
-                                        background: "#f1f1f1",
-                                        borderRadius: "4px"
-                                    },
-                                    "&::-webkit-scrollbar-thumb": {
-                                        background: "#888",
-                                        borderRadius: "4px"
-                                    }
-                                }}
-                            >
-                                <UserList />
+                        {/* Top Section - Cards and Users */}
+                        <Box sx={{ 
+                            display: "grid",
+                            gridTemplateColumns: { xs: "1fr", md: "2fr 1fr" },
+                            gap: 3
+                        }}>
+                            {/* Stats Cards Section */}
+                            <Box>
+                                <Paper 
+                                    elevation={0}
+                                    sx={{ 
+                                        p: 3,
+                                        borderRadius: 2,
+                                        bgcolor: "white",
+                                        height: "100%"
+                                    }}
+                                >
+                                    <Typography
+                                        variant="h5"
+                                        sx={{
+                                            fontWeight: 700,
+                                            fontSize: { xs: "1.25rem", md: "1.5rem" },
+                                            color: "text.primary",
+                                            mb: 3
+                                        }}
+                                    >
+                                        Dashboard Overview
+                                    </Typography>
+                                    <CardsContent />
+                                </Paper>
                             </Box>
 
+                            {/* Users Section */}
+                            <Box>
+                                <Paper 
+                                    elevation={0}
+                                    sx={{ 
+                                        p: 3,
+                                        borderRadius: 2,
+                                        bgcolor: "white",
+                                        height: "100%"
+                                    }}
+                                >
+                                    <Typography
+                                        variant="h5"
+                                        sx={{
+                                            fontWeight: 700,
+                                            fontSize: { xs: "1.25rem", md: "1.5rem" },
+                                            color: "text.primary",
+                                            mb: 3
+                                        }}
+                                    >
+                                        Recent Users
+                                    </Typography>
+                                    <UserList />
+                                </Paper>
+                            </Box>
+                        </Box>
+
+                        {/* Service Centers Section */}
+                        <Paper 
+                            elevation={0}
+                            sx={{ 
+                                p: 3,
+                                borderRadius: 2,
+                                bgcolor: "white"
+                            }}
+                        >
                             <Typography
-                                variant="h4"
+                                variant="h5"
                                 sx={{
                                     fontWeight: 700,
-                                    fontSize: { xs: "1.5rem", md: "2rem" },
+                                    fontSize: { xs: "1.25rem", md: "1.5rem" },
                                     color: "text.primary",
-                                    pl: 3
+                                    mb: 3
                                 }}
                             >
-                                Services Centers
+                                Service Centers
                             </Typography>
                             <Box
                                 sx={{
                                     overflowX: "auto",
                                     width: "100%",
-                                    pl: 3,
                                     "&::-webkit-scrollbar": {
                                         height: "8px"
                                     },
@@ -114,10 +141,7 @@ export default function StaffDashboard() {
                             >
                                 <CentersList />
                             </Box>
-                        </Box>
-                        <Box sx={{ width: isMobile ? "100%" : "350px" }}>
-                            <TaskSection />
-                        </Box>
+                        </Paper>
                     </Box>
                 </Container>
             </Box>

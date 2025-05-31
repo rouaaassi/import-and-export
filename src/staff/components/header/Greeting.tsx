@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import React from "react";
 
 export default function Greeting() {
@@ -15,12 +15,28 @@ export default function Greeting() {
   };
 
   return (
-    <>
-      {/* TODO: need to Authentication  */}
-      <Typography sx={{ color: "#000", fontWeight: 700, fontSize: "30px", pl: 3, lineHeight: "100%", fontFamily: 'unset' }}>
-        {getGreeting()} ,user name
+    <Box>
+      <Typography 
+        sx={{ 
+          color: "#1A1A1A", 
+          fontWeight: 700, 
+          fontSize: { xs: "24px", md: "32px" },
+          lineHeight: 1.2,
+          mb: 1
+        }}
+      >
+        {getGreeting()}, <span style={{ color: "#0118D8" }}>User Name</span>
       </Typography>
-      <Typography sx={{ color: '#A6A8AA', pl: 3, pt: 1, pb :2, fontFamily: 'unset', fontWeight: 400 ,fontSize:'15px'}}>Here is a quick overview you can browse through.</Typography>
-    </>
+      <Typography 
+        sx={{ 
+          color: '#666666',
+          fontSize: { xs: "14px", md: "16px" },
+          lineHeight: 1.5,
+          maxWidth: "600px"
+        }}
+      >
+        Welcome back! Here's what's happening with your parcels today.
+      </Typography>
+    </Box>
   );
 }

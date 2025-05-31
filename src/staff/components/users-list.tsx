@@ -1,82 +1,146 @@
-import { ArrowForwardIos } from "@mui/icons-material";
-import { Avatar, AvatarGroup, Box, Card, IconButton, Typography } from "@mui/material";
+import { ArrowForwardIos, PersonAdd } from "@mui/icons-material";
+import { Avatar, AvatarGroup, Box, Card, IconButton, Typography, Button } from "@mui/material";
 import React, { FC } from "react";
 
 const UserList: FC = () => {
     return (
-        <Card
-            sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                maxWidth: '750px',
-                height: "120px",
-                borderRadius: "30px",
-                px: 4,
-                py: 2,
-                backgroundColor: '#fff',
-                boxShadow: '0 12px 30px rgba(0, 0, 0, 0.12)',
-                transition: 'all 0.3s ease-in-out'
-            }}
-        >
-            <AvatarGroup
-                total={24}
-                componentsProps={{
-                    additionalAvatar: {
-                        sx: {
-                            fontWeight: 'bold',
-                            fontSize: '14px',
-                            color: '#CC2431',
-                            backgroundColor: '#FFEDEE'
-                        }
-                    }
-                }}
-            >
-                <Avatar alt="Remy Sharp" src="/1.png" />
-                <Avatar alt="Travis Howard" src="/2.png" />
-                <Avatar alt="Agnes Walker" src="/3.png" />
-                <Avatar alt="Trevor Henderson" src="/4.png" />
-            </AvatarGroup>
-
-            <Box
+        <Box sx={{ width: "100%" }}>
+            <Box 
                 sx={{
                     display: 'flex',
                     alignItems: 'center',
-                    width: '100%',
-                    ml: 4
+                    justifyContent: 'space-between',
+                    mb: 3
                 }}
             >
                 <Typography
                     sx={{
-                        fontWeight: 600,
-                        fontSize: { xs: '14px', sm: '16px' },
-                        color: '#333',
-                        whiteSpace: 'nowrap',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        maxWidth: { xs: '150px', sm: '400px' }
+                        fontSize: '14px',
+                        color: '#666',
+                        fontWeight: 500
                     }}
                 >
-                    New users have logged in today. Please check them out.
+                    Last 24 hours
                 </Typography>
-
-                <IconButton
+                <Button
+                    variant="outlined"
+                    startIcon={<PersonAdd />}
                     sx={{
-                        bgcolor: "#64DB96",
-                        borderRadius: "50%",
-                        width: "48px",
-                        height: "48px",
-                        color: "#0E3056",
-                        ml: 2,
+                        textTransform: 'none',
+                        borderRadius: '8px',
+                        borderColor: '#E3E8FF',
+                        color: '#0118D8',
                         '&:hover': {
-                            bgcolor: "#52c284"
+                            borderColor: '#0118D8',
+                            backgroundColor: '#F5F7FF'
                         }
                     }}
                 >
-                    <ArrowForwardIos sx={{ fontSize: "16px" }} />
-                </IconButton>
+                    View All Users
+                </Button>
             </Box>
-        </Card>
+
+            <Card
+                sx={{
+                    borderRadius: "16px",
+                    backgroundColor: '#fff',
+                    boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.05)',
+                    p: 3
+                }}
+            >
+                <Box
+                    sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        mb: 3
+                    }}
+                >
+                    <Box>
+                        <Typography
+                            sx={{
+                                fontSize: '24px',
+                                fontWeight: 700,
+                                color: '#1A1A1A',
+                                mb: 1
+                            }}
+                        >
+                            24 New Users
+                        </Typography>
+                        <Typography
+                            sx={{
+                                fontSize: '14px',
+                                color: '#666',
+                                fontWeight: 500
+                            }}
+                        >
+                            New users have logged in today
+                        </Typography>
+                    </Box>
+                    <IconButton
+                        sx={{
+                            bgcolor: "#F5F7FF",
+                            borderRadius: "12px",
+                            width: "48px",
+                            height: "48px",
+                            color: "#0118D8",
+                            '&:hover': {
+                                bgcolor: "#E3E8FF"
+                            }
+                        }}
+                    >
+                        <ArrowForwardIos sx={{ fontSize: "16px" }} />
+                    </IconButton>
+                </Box>
+
+                <Box
+                    sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 2,
+                        p: 2,
+                        bgcolor: '#F5F7FF',
+                        borderRadius: '12px'
+                    }}
+                >
+                    <AvatarGroup
+                        total={24}
+                        sx={{
+                            '& .MuiAvatar-root': {
+                                border: '2px solid #fff',
+                                width: 40,
+                                height: 40,
+                                fontSize: '14px'
+                            }
+                        }}
+                        componentsProps={{
+                            additionalAvatar: {
+                                sx: {
+                                    fontWeight: 600,
+                                    fontSize: '14px',
+                                    color: '#0118D8',
+                                    backgroundColor: '#E3E8FF'
+                                }
+                            }
+                        }}
+                    >
+                        <Avatar alt="Remy Sharp" src="/1.png" />
+                        <Avatar alt="Travis Howard" src="/2.png" />
+                        <Avatar alt="Agnes Walker" src="/3.png" />
+                        <Avatar alt="Trevor Henderson" src="/4.png" />
+                    </AvatarGroup>
+                    <Typography
+                        sx={{
+                            fontSize: '14px',
+                            color: '#666',
+                            fontWeight: 500
+                        }}
+                    >
+                        New users have joined the platform
+                    </Typography>
+                </Box>
+            </Card>
+        </Box>
     );
 };
 

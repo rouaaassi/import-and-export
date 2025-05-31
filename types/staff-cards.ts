@@ -1,9 +1,8 @@
-
 import { ReactNode } from "react";
 
 export type IStaffCards = {
   title: string;
-  parcels: number;
+  parcels: number | string;
   icon: ReactNode;
   bgcolor: string;
   color: string;
