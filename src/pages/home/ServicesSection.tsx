@@ -1,6 +1,6 @@
 import { Card, CardMedia, CardContent, Box, Typography, Avatar, Stack } from "@mui/material";
 import { FC } from "react";
-import { serviceCards } from "./service-content";
+import { serviceCards } from "../../constants/service-feature-content";
 import Icon from '@mui/material/Icon';
 
 const ServicesSection: FC = () => {

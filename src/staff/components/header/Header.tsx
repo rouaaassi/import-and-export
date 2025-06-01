@@ -1,6 +1,6 @@
 import React from "react";
 import SearchBar from "../search/search";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { Link } from "react-router";
 import PATH from "../../../../routes/route";
 import Profile from "../../../components/profileModel";
@@ -37,7 +37,6 @@ export default function Header() {
             </Button>
             <Box sx={{ display: 'flex' }}>
                 <Button
-                    startIcon={<img src="/reminder.png" style={{ width: 24, height: 24 }} />}
                     sx={{ textTransform: "none", color: "#333" }}
                     endIcon={<img src="/vector2.png" style={{ width: 34, height: 34 }} />}>reminder</Button>
                 <Profile />
