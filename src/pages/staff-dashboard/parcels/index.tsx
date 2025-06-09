@@ -1,73 +1,86 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Typography, useTheme } from "@mui/material";
 import React, { FC } from "react";
 import OrderTable from "../../../staff/components/orders/ordersTabel";
 import LayoutDashboard from "../../../staff/components/sideBar/layouts/dashboardLayout/layout";
-import AddBoxIcon from '@mui/icons-material/AddBox';
-import StatusUpdateDialog from "./complete-edting";
+import AddSharpIcon from '@mui/icons-material/AddSharp';
 
-const Parcels: FC = () => {
+interface ParcelsProps {
+    setDarkMode: (val: boolean) => void;
+    darkMode: boolean;
+}
+
+const Parcels: FC<ParcelsProps> = ({ setDarkMode, darkMode }) => {
+    const theme = useTheme();
+    const isDarkMode = theme.palette.mode === 'dark';
+    
     return (
-        <LayoutDashboard>
-            <Box sx={{ pt: 3, px: { xs: 2, sm: 4 } }}>
+        <LayoutDashboard setDarkMode={setDarkMode} darkMode={darkMode}>
+            <Box sx={{ 
+                pt: 3, 
+                px: { xs: 2, sm: 4, md: 8 },
+                bgcolor: isDarkMode ? 'rgb(18, 24, 57)' : '#F5F7FA',
+                minHeight: '100vh'
+            }}>
                 <Box
                     sx={{
                         display: 'flex',
-                        flexDirection: 'column',
+                        flexDirection: { xs: 'column', sm: 'row' },
+                        alignItems: { xs: 'stretch', sm: 'center' },
+                        justifyContent: 'space-between',
                         gap: 2,
-                        mb: 2,
-                        pl:3,
-                        position:"relative",
-                        left :'65px'
+                        mb: 4,
+                        maxWidth: '1200px',
+                        mx: 'auto'
                     }}
                 >
-                    <Typography
-                        sx={{
-                            fontWeight: 700,
-                            fontSize: { xs: '22px', sm: '26px', md: '30px' },
-                            lineHeight: '100%'
-                        }}
-                    >
-                        Parcels Management
-                    </Typography>
-                    <Typography
-                        sx={{
-                            fontWeight: 400,
-                            fontSize: { xs: '13px', sm: '14px', md: '15px' },
-                            lineHeight: '100%',
-                            color: '#A6A8AA'
-                        }}
-                    >
-                        Here is a quick overview you can browse through.
-                    </Typography>
-                </Box>
-
-                <Box
-                    sx={{
-                        display: 'flex',
-                        justifyContent: { xs: 'center', sm: 'flex-end' },
-                        mb: 3
-                    }}
-                >
+                    <Box>
+                        <Typography
+                            sx={{
+                                fontWeight: 700,
+                                fontSize: { xs: '24px', sm: '28px', md: '32px' },
+                                color: isDarkMode ? '#fff' : '#1A1A1A',
+                                lineHeight: 1.2
+                            }}
+                        >
+                            Parcels Management
+                        </Typography>
+                        <Typography
+                            sx={{
+                                fontWeight: 400,
+                                fontSize: { xs: '14px', sm: '16px' },
+                                color: isDarkMode ? '#A0AEC0' : '#666666',
+                                lineHeight: 1.5
+                            }}
+                        >
+                            Here is a comprehensive overview of all parcels you can browse and manage.
+                        </Typography>
+                    </Box>
                     <Button
                         sx={{
-                            width: { xs: '100%', sm: '250px' },
-                            maxWidth: '100%',
-                            height: '53px',
-                            borderRadius: '30px',
+                            width: { xs: '100%', sm: '200px' },
+                            height: '43px',
+                            borderRadius: '12px',
                             bgcolor: '#0118D8',
                             color: '#fff',
-                            fontSize: '15px',
-                            fontWeight: 700,
-                            lineHeight: '100%',
-                            textTransform: 'none'
+                            fontSize: '16px',
+                            fontWeight: 600,
+                            textTransform: 'none',
+                            alignSelf: { xs: 'stretch', sm: 'center' },
+                            mt: { xs: 2, sm: 0 },
+                            '&:hover': {
+                                bgcolor: '#011188',
+                            }
                         }}
-                        startIcon={<AddBoxIcon />}
+                        startIcon={<AddSharpIcon />}
                     >
-                        Add New parcels
+                        Add New Parcel
                     </Button>
                 </Box>
+
+                <Box sx={{ maxWidth: '1200px', mx: 'auto' }}>
+                    <OrderTable />
+                </Box>
             </Box>
-            <OrderTable />
         </LayoutDashboard>
     );
 };

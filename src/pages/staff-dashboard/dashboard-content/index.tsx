@@ -1,150 +1,109 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     Box,
     Typography,
     Container,
-    Paper
+    Paper,
 } from "@mui/material";
+import Grid from '@mui/material/Grid';
 import Greeting from "../../../staff/components/header/Greeting";
 import CardsContent from "../../../staff/components/cards/cards-content";
-import UserList from "../../../staff/components/users-list";
-import CentersList from "../../../staff/components/centers/centers-list";
 import LayoutDashboard from "../../../staff/components/sideBar/layouts/dashboardLayout/layout";
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import CustomerRating from '../../../staff/components/customer_rate'
+import QuickAction from "../../../staff/components/quick_action";
 
-export default function StaffDashboard() {
+interface StaffDashboardProps {
+  setDarkMode: (val: boolean) => void;
+  darkMode: boolean;
+}
+
+export default function StaffDashboard({ setDarkMode, darkMode }: StaffDashboardProps) {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const [open, setOpen] = useState(false);
+    const today = new Date().toLocaleDateString();
     return (
-        <LayoutDashboard>
+        <LayoutDashboard setDarkMode={setDarkMode} darkMode={darkMode}>
             <Box sx={{ 
                 display: "flex", 
                 flexDirection: "column", 
-                width: "100%",
-                bgcolor: "#F5F7FA",
-                minHeight: "100vh"
+                width: "90%",
+                bgcolor: 'background.default',
+                minHeight: "80vh"
             }}>
                 <Container
                     maxWidth="xl"
                     sx={{ 
                         py: 4,
                         position: "relative",
-                        left: { xs: 0, md: "85px" },
-                        px: { xs: 2, md: 4 }
+                        left: { xs: 45, md: "85px" },
+                        px: { xs: 2},
+                        bgcolor: 'background.default'
                     }}
                 >
-                    {/* Header Section */}
-                    <Box sx={{ mb: 4 }}>
-                        <Greeting />
+                    {/* Header Section with Quick Actions */}
+                    <Box sx={{ mb: 1, bgcolor: 'background.default' }}>
+                        <Box sx={{ 
+                            display: 'flex', 
+                            justifyContent: 'space-between', 
+                            alignItems: 'center',
+                            mb: 1,
+                            bgcolor: 'background.default'
+                        }}>
+                            <Greeting />
+                            <Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 1 }}>
+                                <CalendarMonthIcon sx={{ color: 'text.secondary', fontSize: 22 }} />
+                                <Typography variant="subtitle1" sx={{ fontWeight: 600, color: 'text.secondary' }}>
+                                    {today}
+                                </Typography>
+                            </Box>
+                        </Box>
                     </Box>
 
                     {/* Main Content */}
-                    <Box
-                        sx={{
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: 4
-                        }}
-                    >
-                        {/* Top Section - Cards and Users */}
-                        <Box sx={{ 
-                            display: "grid",
-                            gridTemplateColumns: { xs: "1fr", md: "2fr 1fr" },
-                            gap: 3
-                        }}>
-                            {/* Stats Cards Section */}
-                            <Box>
-                                <Paper 
-                                    elevation={0}
-                                    sx={{ 
-                                        p: 3,
-                                        borderRadius: 2,
-                                        bgcolor: "white",
-                                        height: "100%"
-                                    }}
-                                >
+                    <Grid container spacing={3}>
+                        {/* Left Column */}
+                        <Grid>
+                            {/* Dashboard Overview */}
+                            <Paper 
+                                elevation={0}
+                                sx={{ 
+                                    borderRadius: 2,
+                                    bgcolor: 'background.default',
+                                    mb: 3 , 
+                                    width :'100%'
+                                }}
+                            >
+                                <Box sx={{ 
+                                    display: 'flex', 
+                                    justifyContent: 'space-between', 
+                                    alignItems: 'center',
+                                    mb: 3,
+                                    bgcolor: 'background.default'
+                                }}>
                                     <Typography
                                         variant="h5"
                                         sx={{
                                             fontWeight: 700,
                                             fontSize: { xs: "1.25rem", md: "1.5rem" },
-                                            color: "text.primary",
-                                            mb: 3
+                                            color: "text.primary"
                                         }}
                                     >
                                         Dashboard Overview
                                     </Typography>
-                                    <CardsContent />
-                                </Paper>
-                            </Box>
-
-                            {/* Users Section */}
-                            <Box>
-                                <Paper 
-                                    elevation={0}
-                                    sx={{ 
-                                        p: 3,
-                                        borderRadius: 2,
-                                        bgcolor: "white",
-                                        height: "100%"
-                                    }}
-                                >
-                                    <Typography
-                                        variant="h5"
-                                        sx={{
-                                            fontWeight: 700,
-                                            fontSize: { xs: "1.25rem", md: "1.5rem" },
-                                            color: "text.primary",
-                                            mb: 3
-                                        }}
-                                    >
-                                        Recent Users
-                                    </Typography>
-                                    <UserList />
-                                </Paper>
-                            </Box>
-                        </Box>
-
-                        {/* Service Centers Section */}
-                        <Paper 
-                            elevation={0}
-                            sx={{ 
-                                p: 3,
-                                borderRadius: 2,
-                                bgcolor: "white"
-                            }}
-                        >
-                            <Typography
-                                variant="h5"
-                                sx={{
-                                    fontWeight: 700,
-                                    fontSize: { xs: "1.25rem", md: "1.5rem" },
-                                    color: "text.primary",
-                                    mb: 3
-                                }}
-                            >
-                                Service Centers
-                            </Typography>
-                            <Box
-                                sx={{
-                                    overflowX: "auto",
-                                    width: "100%",
-                                    "&::-webkit-scrollbar": {
-                                        height: "8px"
-                                    },
-                                    "&::-webkit-scrollbar-track": {
-                                        background: "#f1f1f1",
-                                        borderRadius: "4px"
-                                    },
-                                    "&::-webkit-scrollbar-thumb": {
-                                        background: "#888",
-                                        borderRadius: "4px"
-                                    }
-                                }}
-                            >
-                                <CentersList />
-                            </Box>
-                        </Paper>
-                    </Box>
+                                </Box>
+                                <CardsContent open={open} />
+                            </Paper>
+                            <Box sx={{display:'flex',flexDirection:{xs:'column', md :'row'} , gap:3,width:'100%'}}>
+                            <CustomerRating/>
+                        <QuickAction/></Box>
+                           
+                        </Grid>                       
+                    </Grid>
                 </Container>
             </Box>
         </LayoutDashboard>
     );
 }
+
+

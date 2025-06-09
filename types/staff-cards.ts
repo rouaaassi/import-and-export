@@ -9,4 +9,5 @@ export type IStaffCards = {
   border?: string;
   textColor?: string;
   percent?: string;
+  average?:string | number
 };

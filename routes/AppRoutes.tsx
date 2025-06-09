@@ -10,8 +10,12 @@ import Parcels from '../src/pages/staff-dashboard/parcels';
 import ParcelsDetails from '../src/pages/staff-dashboard/parcels/[id]';
 import CustomerApp from '../src/pages/customer-app';
 
+interface AppRoutesProps {
+  setDarkMode: (val: boolean) => void;
+  darkMode: boolean;
+}
 
-const AppRoutes = () => {
+const AppRoutes = ({ setDarkMode, darkMode }: AppRoutesProps) => {
   return (
     <Routes>
       <Route path="/signup" element={<SignUp />} />
@@ -19,7 +23,7 @@ const AppRoutes = () => {
       <Route path='/login' element={<LogIn />} />
       <Route path='/forgetpassword' element={<ForgetPassword />} />
       <Route path='/about' element={<AboutSection />} />
-      <Route path='/staff-dashboard' element={<StaffDashboard />} />
+      <Route path='/staff-dashboard' element={<StaffDashboard setDarkMode={setDarkMode} darkMode={darkMode} />} />
       <Route path='/parcels' element={<Parcels />} />
       <Route path='/parcels/:id' element={<ParcelsDetails />} />
       <Route path='/customer-app' element={<CustomerApp/>}/>

@@ -1,7 +1,8 @@
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, useTheme } from "@mui/material";
 import React from "react";
 
 export default function Greeting() {
+  const theme = useTheme();
   const getGreeting = () => {
     const hour = new Date().getHours();
 
@@ -18,7 +19,7 @@ export default function Greeting() {
     <Box>
       <Typography 
         sx={{ 
-          color: "#1A1A1A", 
+          color: theme.palette.mode === 'dark' ? '#fff' : "#1A1A1A", 
           fontWeight: 700, 
           fontSize: { xs: "24px", md: "32px" },
           lineHeight: 1.2,
@@ -29,7 +30,7 @@ export default function Greeting() {
       </Typography>
       <Typography 
         sx={{ 
-          color: '#666666',
+          color: theme.palette.mode === 'dark' ? '#eee' : '#666666',
           fontSize: { xs: "14px", md: "16px" },
           lineHeight: 1.5,
           maxWidth: "600px"

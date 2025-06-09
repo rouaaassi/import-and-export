@@ -1,12 +1,37 @@
-import { Avatar, Box, IconButton } from "@mui/material";
-import React, { ChangeEvent, FC, useState } from "react";
+import { Box, IconButton } from "@mui/material";
+import React, { ChangeEvent, FC, useEffect, useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import axios from "axios";
 
-const ProfileModal: FC = () => {
-  const [showModal, setShowModal] = useState(false);
+interface ProfileModalProps {
+  open: boolean;
+  onClose: () => void;
+}
+
+const ProfileModal: FC<ProfileModalProps> = ({ open, onClose }) => {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
 
+  // fetch photo when reload website
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const res = await axios.get("http://localhost:7000/api/v1.0.0/users/me", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+
+        // make sure that token name in data is same for photo url
+        setImageSrc(res.data.image); 
+      } catch (error) {
+        console.error(" error fetching user data   :", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
+
+  // upload to cloudinary
   const handleFileChange = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -16,14 +41,26 @@ const ProfileModal: FC = () => {
     formData.append("upload_preset", "vpvajzyt"); 
 
     try {
+      // Cloudinary
       const res = await axios.post(
         "https://api.cloudinary.com/v1_1/ds15utsvr/image/upload",
         formData
       );
       const url = res.data.secure_url;
-      setImageSrc(url);
-      setShowModal(false);
+      setImageSrc(url); //save url in front
 
+      // send url to backend
+      await axios.post(
+        "http://localhost:7000/api/v1.0.0/users/me",
+        { image: url },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+
+      onClose();
     } catch (err) {
       console.error("Upload failed:", err);
     }
@@ -31,19 +68,17 @@ const ProfileModal: FC = () => {
 
   return (
     <>
-      {imageSrc ? (
+     {/* show photo if exit */}
+      {imageSrc && (
         <img
           src={imageSrc}
           alt="profile"
-          style={{ width: 24, height: 24, borderRadius: "50%" }}
+          style={{ width: 40, height: 40, borderRadius: "50%", objectFit: "cover" }}
         />
-      ) : (
-        <IconButton onClick={() => setShowModal(true)}>
-          <Avatar />
-        </IconButton>
       )}
 
-      {showModal && (
+    {/* loading */}
+      {open && (
         <Box
           sx={{
             position: "fixed",
@@ -63,7 +98,7 @@ const ProfileModal: FC = () => {
             <h2 className="text-lg font-bold mb-4">Upload photo</h2>
 
             <IconButton
-              onClick={() => setShowModal(false)}
+              onClick={onClose}
               sx={{
                 position: "absolute",
                 top: 8,

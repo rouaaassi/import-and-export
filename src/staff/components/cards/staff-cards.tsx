@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { IStaffCards } from "../../../../types/staff-cards";
 import { Card, CardContent, Typography, Box } from "@mui/material";
 
-const StaffCards: FC<IStaffCards> = ({ title, parcels, icon, bgcolor, color, border, textColor, percent }) => {
+const StaffCards: FC<IStaffCards> = ({ title, parcels, icon, bgcolor, color, border,average, textColor, percent }) => {
   return (
     <Card
       sx={{
@@ -10,10 +10,10 @@ const StaffCards: FC<IStaffCards> = ({ title, parcels, icon, bgcolor, color, bor
         color: color,
         borderRadius: '16px',
         border: border ? `1px solid ${border}` : 'none',
-        height: '140px',
+        height: '160px',
         boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.05)",
         position: "relative",
-        width: "280px",
+        width: "100%",
         transition: "transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out",
         '&:hover': {
           transform: "translateY(-4px)",
@@ -21,7 +21,7 @@ const StaffCards: FC<IStaffCards> = ({ title, parcels, icon, bgcolor, color, bor
         }
       }}
     >
-      <CardContent sx={{ p: 3, height: "100%" }}>
+      <CardContent sx={{  height: "100%" }}>
         <Box 
           display="flex" 
           justifyContent="space-between" 
@@ -32,10 +32,12 @@ const StaffCards: FC<IStaffCards> = ({ title, parcels, icon, bgcolor, color, bor
             <Typography 
               variant="subtitle1" 
               sx={{ 
-                fontWeight: 600, 
+                fontWeight: 800, 
                 fontSize: '16px',
                 color: color,
-                mb: 2
+                mb: 1,
+                fontFamily:'unset'
+              
               }}
             >
               {title}
@@ -54,7 +56,6 @@ const StaffCards: FC<IStaffCards> = ({ title, parcels, icon, bgcolor, color, bor
                 sx={{ 
                   fontSize: '14px',
                   fontWeight: 500,
-                  ml: 1,
                   opacity: 0.8
                 }}
               >
@@ -79,7 +80,7 @@ const StaffCards: FC<IStaffCards> = ({ title, parcels, icon, bgcolor, color, bor
           <Box 
             sx={{ 
               position: "absolute",
-              bottom: 24,
+              bottom:45,
               right: 24,
               opacity: 0.8
             }}
@@ -87,6 +88,9 @@ const StaffCards: FC<IStaffCards> = ({ title, parcels, icon, bgcolor, color, bor
             {icon}
           </Box>
         </Box>
+        <Box sx={{mb:3}}>
+            <Typography sx={{color:"3333", fontSize:'12px'}}>{average}</Typography>
+          </Box>
       </CardContent>
     </Card>
   );
