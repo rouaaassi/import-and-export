@@ -24,7 +24,7 @@ const AppRoutes = ({ setDarkMode, darkMode }: AppRoutesProps) => {
       <Route path='/forgetpassword' element={<ForgetPassword />} />
       <Route path='/about' element={<AboutSection />} />
       <Route path='/staff-dashboard' element={<StaffDashboard setDarkMode={setDarkMode} darkMode={darkMode} />} />
-      <Route path='/parcels' element={<Parcels />} />
+      <Route path='/parcels' element={<Parcels setDarkMode={setDarkMode} darkMode={darkMode} />} />
       <Route path='/parcels/:id' element={<ParcelsDetails />} />
       <Route path='/customer-app' element={<CustomerApp/>}/>
     </Routes>

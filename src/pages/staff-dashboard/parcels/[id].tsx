@@ -16,6 +16,7 @@ import CloseIcon from '@mui/icons-material/Close';
 
 const ParcelsDetails: FC = () => {
     const [open, setOpen] = useState(false);
+    const [darkMode, setDarkMode] = useState(false);
 
     // Form states
     const [name, setName] = useState('');
@@ -38,7 +39,7 @@ const ParcelsDetails: FC = () => {
     // };
 
     return (
-        <LayoutDashboard>
+        <LayoutDashboard setDarkMode={setDarkMode} darkMode={darkMode}>
             <Box display="flex" flexDirection="row" gap={10} sx={{pl:'95px'}}>
                 <Box>
                     {/* Header */}

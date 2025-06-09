@@ -8,6 +8,14 @@ interface ProfileModalProps {
   onClose: () => void;
 }
 
+interface UserResponse {
+  image: string;
+}
+
+interface CloudinaryResponse {
+  secure_url: string;
+}
+
 const ProfileModal: FC<ProfileModalProps> = ({ open, onClose }) => {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
 
@@ -15,7 +23,7 @@ const ProfileModal: FC<ProfileModalProps> = ({ open, onClose }) => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const res = await axios.get("http://localhost:7000/api/v1.0.0/users/me", {
+        const res = await axios.get<UserResponse>("http://localhost:7000/api/v1.0.0/users/me", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
@@ -42,7 +50,7 @@ const ProfileModal: FC<ProfileModalProps> = ({ open, onClose }) => {
 
     try {
       // Cloudinary
-      const res = await axios.post(
+      const res = await axios.post<CloudinaryResponse>(
         "https://api.cloudinary.com/v1_1/ds15utsvr/image/upload",
         formData
       );
