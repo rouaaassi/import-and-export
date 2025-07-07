@@ -7,12 +7,13 @@ interface Props {
 }
 
 const SocialIcons = ({ position }: Props) => (
-  <Box sx={{ display: 'flex', gap: 2, color: position === 'top' ? '#0118D8' : '#fff' }}>
+  <Box sx={{ display: 'flex',justifyContent:"center", gap: 2, color: position === 'top' ? '#0118D8' : '#fff' }}>
     {[Facebook, Instagram, Twitter, LinkedIn].map((Icon, index) => (
       <IconButton
         key={index}
         size="small"
         sx={{
+          color:"#333",
           cursor: 'pointer',
           transition: 'all 0.3s ease',
           '&:hover': {

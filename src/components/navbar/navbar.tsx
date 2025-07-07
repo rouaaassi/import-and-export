@@ -65,7 +65,7 @@ const NavBar: FC = () => {
           }}
         >
           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-start' }}>
-            <Logo />
+            <Logo isNavbar={true} />
           </Box>
 
           <Box sx={{ 

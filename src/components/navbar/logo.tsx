@@ -4,6 +4,11 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import { Link } from 'react-router-dom';
 import PATH from '../../../routes/route';
 
+
+type LogoProps = {
+  isNavbar?: boolean;
+};
+
 const getRandomColor = () => {
   const colors = ['#0118D8'];
   return colors[Math.floor(Math.random() * colors.length)];
@@ -12,8 +17,7 @@ type colorProps = {
   color?: string;
 };
 
-const Logo = ({ color }: colorProps) => {
-  const logoColor = color || getRandomColor();
+const Logo = ({ isNavbar=true}:LogoProps) => {
 
   return (
     <Box 
@@ -43,7 +47,7 @@ const Logo = ({ color }: colorProps) => {
           fontSize: 32,
           filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))'
         }} /> */}
-        <img src='/logo22.png' alt ='logo' width={52} height={42} />
+        <img src={isNavbar?'/logo22.png':'/finall.png' }alt ='logo' width={52} height={42} />
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Typography
@@ -54,7 +58,6 @@ const Logo = ({ color }: colorProps) => {
             fontSize: '1rem',
             lineHeight: 1,
             letterSpacing: '0.5px',
-            color: logoColor,
           }}
         >
           Express Syria

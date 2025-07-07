@@ -69,7 +69,7 @@ export default function SideBar({ open, setOpen }: SideBarProps) {
                     pb: 1,
                     mb: 2
                 }}>
-                    <Logo color='#fff' />
+                    <Logo isNavbar={false} />
                     <Typography sx={{ color: '#fff', pt: 5 }}> Employee Dashboard</Typography>
                 </Box>
             )}

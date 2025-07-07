@@ -22,7 +22,7 @@ const FooterBottom = () => {
       <Grid container spacing={2} alignItems="center">
         <Grid >
           <Box sx={{ '& .MuiTypography-root': { color: '#fff !important', filter: 'brightness(1.2)' } }}>
-            <Logo />
+            <Logo isNavbar={false} />
           </Box>
         </Grid>
         <Grid><ContactInfo /></Grid>
