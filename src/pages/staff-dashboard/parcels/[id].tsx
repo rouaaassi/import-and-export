@@ -2,41 +2,18 @@ import React, { FC, useState } from "react";
 import LayoutDashboard from "../../../staff/components/sideBar/layouts/dashboardLayout/layout";
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { Box, Typography, Button, Modal, TextField, IconButton } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 import RoomIcon from '@mui/icons-material/Room';
 import FlagIcon from '@mui/icons-material/Flag';
 import StorageIcon from '@mui/icons-material/Storage';
 import PersonIcon from '@mui/icons-material/Person';
 import ParcelTypeCard from "../../../staff/components/parcels/parcel-type-card";
 import AddressCard from "../../../staff/components/parcels/address-card";
-import CentersList from "../../../staff/components/centers/centers-list";
+import CentersList from "./parcels_details";
 import TrackParcel from "../../../staff/components/parcels/truck-parcel-status";
-import CloseIcon from '@mui/icons-material/Close';
-// import { edit } from '../../../../api/handlers/edit-parcel';
 
 const ParcelsDetails: FC = () => {
-    const [open, setOpen] = useState(false);
     const [darkMode, setDarkMode] = useState(false);
-
-    // Form states
-    const [name, setName] = useState('');
-    const [parcel, setParcel] = useState('');
-    const [number, setNumber] = useState('');
-    const [location, setLocation] = useState('');
-
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-
-    // const handleSubmit = async () => {
-    //     try {
-    //         const parcelForm = { name, parcel, number, location };
-    //         const response = await edit(parcelForm);
-    //         console.log("Parcel updated successfully:", response);
-    //         handleClose();
-    //     } catch (error) {
-    //         console.error("Error occurred while editing parcel:", error);
-    //     }
-    // };
 
     return (
         <LayoutDashboard setDarkMode={setDarkMode} darkMode={darkMode}>
@@ -135,141 +112,7 @@ const ParcelsDetails: FC = () => {
                 <TrackParcel />
             </Box>
 
-            {/* Action buttons */}
-            <Box
-                sx={{
-                    display: "flex",
-                    justifyContent: "flex-end",
-                    gap: 2,
-                    px: 3,
-                    pb: 3,
-                    mt: 1,
-                    mr: 10
-                }}
-            >
-                <Button
-                    sx={{
-                        bgcolor: "#D27E14",
-                        color: "#fff",
-                        borderRadius: "30px",
-                        fontWeight: 700,
-                        fontSize: "18px",
-                        width: "200px",
-                        height: "56px",
-                        textTransform: "none",
-                        "&:hover": { bgcolor: "#b4660f" },
-                    }}
-                >
-                    Update
-                </Button>
 
-                <Button
-                    onClick={handleOpen}
-                    sx={{
-                        bgcolor: "#0118D8",
-                        color: "#fff",
-                        borderRadius: "30px",
-                        fontWeight: 700,
-                        fontSize: "18px",
-                        width: "200px",
-                        height: "56px",
-                        textTransform: "none",
-                        "&:hover": { bgcolor: "#0014b3" },
-                    }}
-                >
-                    Edit parcel
-                </Button>
-            </Box>
-
-            {/* Modal */}
-            <Modal open={open} onClose={handleClose}>
-                <Box sx={{
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    width: '100vw',
-                    height: '100vh',
-                    backdropFilter: 'blur(6px)',
-                    backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    zIndex: 1300,
-                }}>
-                    <Box
-                        sx={{
-                            backgroundColor: '#fff',
-                            padding: 4,
-                            borderRadius: 4,
-                            minWidth: 320,
-                            boxShadow: 24,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            gap: 2,
-                            position: 'relative',
-                        }}
-                    >
-                        <IconButton
-                            onClick={handleClose}
-                            sx={{
-                                position: 'absolute',
-                                top: 8,
-                                right: 8,
-                                color: '#555',
-                            }}
-                        >
-                            <CloseIcon />
-                        </IconButton>
-
-                        <Typography variant="h6" fontWeight="bold" textAlign="center">
-                            Edit Parcel
-                        </Typography>
-
-                        <TextField
-                            label="New Customer Name"
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                        />
-
-                        <TextField
-                            label="Location"
-                            type="text"
-                            value={location}
-                            onChange={(e) => setLocation(e.target.value)}
-                        />
-
-                        <TextField
-                            label="Edit Parcel Description"
-                            type="text"
-                            value={parcel}
-                            onChange={(e) => setParcel(e.target.value)}
-                        />
-
-                        <TextField
-                            label="New Phone Number"
-                            type="text"
-                            value={number}
-                            onChange={(e) => setNumber(e.target.value)}
-                        />
-
-                        <Button
-                            variant="contained"
-                            // onClick={handleSubmit}
-                            sx={{
-                                mt: 2,
-                                borderRadius: '30px',
-                                backgroundColor: '#0118D8',
-                                fontWeight: 'bold',
-                                '&:hover': { backgroundColor: '#115293' },
-                            }}
-                        >
-                            Save
-                        </Button>
-                     
-                    </Box>
-                </Box>
-            </Modal>
         </LayoutDashboard>
     );
 };

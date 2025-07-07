@@ -135,7 +135,8 @@ const CustomerApp: FC = () => {
                         alignItems: "center",
                         gap: { xs: 2, md: 3 },
                         height: { xs: "auto", md: "20%" },
-                        pt: { xs: 4, md:0.1 },
+                        mb:12,
+                        pt: { xs: 3, md:0.1 },
                     }}>
                         {/* App Image */}
                         <Box sx={{

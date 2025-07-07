@@ -79,7 +79,7 @@ export default function Home() {
                         <Box sx={{ 
                             display: 'flex', 
                             flexDirection: "column", 
-                            gap: { xs: 4, lg: 7 },
+                            gap: { xs: 4, lg: 5 },
                             maxWidth: { xs: "100%", lg: "50%" },
                             textAlign: { xs: "center", lg: "left" }
                         }}>
@@ -89,7 +89,7 @@ export default function Home() {
                                     fontFamily: "Sansita, sans-serif",
                                     fontWeight: 700,
                                     color: "#0118D8",
-                                    fontSize: { xs: "2.2rem", lg: "4rem" },
+                                    fontSize: { xs: "2.2rem", lg: "2.5rem" },
                                     lineHeight: 1.2,
                                     textShadow: '0px 4px 4px rgba(0, 0, 0, 0.1)'
                                 }}
@@ -100,11 +100,10 @@ export default function Home() {
 
                             <Box sx={{ 
                                 color: '#666',
-                                fontSize: { xs: "1rem", lg: "1.1rem" },
                                 lineHeight: 1.6
                             }}>
-                                <Typography>
-                                    Welcome to the control panel of the shipping and import system from Germany to Syria.
+                                <Typography sx={{ fontSize: { xs: "0.7rem", lg: "0.9rem" },}}>
+                                    Welcome to the control panel of the shipping and import system from Germany to Syria.<br/>
                                     This site is dedicated to managing operations, tracking shipments, and coordinating
                                     work teams from one centralized platform.
                                 </Typography>
@@ -126,8 +125,8 @@ export default function Home() {
                                         bgcolor: '#0118D8',
                                         paddingX: { xs: 3, lg: 4 },
                                         paddingY: 1.5,
-                                        fontWeight: 600,
-                                        fontSize: { xs: "1rem", lg: "1.1rem" },
+                                        fontWeight: 400,
+                                        fontSize: { xs: "1rem", lg: "0.8rem" },
                                         display: "flex",
                                         alignItems: "center",
                                         minWidth: { xs: "100%", sm: "auto" },

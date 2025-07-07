@@ -27,9 +27,9 @@ export default function SideBar({ open, setOpen }: SideBarProps) {
     const pages = [
         { label: "Dashboard", icon: <WidgetsIcon sx={{color:'#0118D8'}} />, href: PATH.dasboardstaff },
         { label: "Parcels", icon: <img src='/parcels.png' style={{ width: 24, height: 24 }} />, href: PATH.parcels },
-        { label: "Users", icon: <Groups2Icon />, href: PATH.parcels },
-        { label: "Ratings Management", icon: <StarsRoundedIcon />, href: PATH.dasboardstaff },
-        { label: "Services Centers", icon: <AddLocationAltRoundedIcon />, href: PATH.dasboardstaff },
+        { label: "Users", icon: <Groups2Icon />, href: PATH.Customers },
+        { label: "Ratings Management", icon: <StarsRoundedIcon />, href: PATH.Rating },
+        { label: "Services Centers", icon: <AddLocationAltRoundedIcon />, href: PATH.ServiceCenter },
         { label: "Back Home", icon: <HomeIcon />, href: PATH.home },
     ];
 

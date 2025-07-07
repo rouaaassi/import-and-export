@@ -8,28 +8,19 @@ import {
   TableHead,
   TableRow,
   Switch,
-  IconButton,
 } from "@mui/material";
 import React, { FC, useState } from "react";
-import { ICentersList } from "../../../../types/centers-list";
+import { IParcelsDetails } from "../../../../types/parcel_details";
 
-const data: ICentersList[] = [
+const data: IParcelsDetails[] = [
   {
     id: 1,
-    ServiceCenterName: "Serial shipment",
-    location: "Damascus",
-    parcels: 200,
-    phoneNumber: "+9630000000",
+    customerName: "Serial shipment",
+    serviceCenter:'Damascus',
+    destination:'Aleppo',
+    weight:'130',
+    date: new Date(),
     Actions: false,
-    status: undefined,
-  },
-  {
-    id: 2,
-    ServiceCenterName: "Ship your goods",
-    location: "Hama",
-    parcels: 100,
-    phoneNumber: "+9630000000",
-    Actions: true,
     status: undefined,
   },
 ];
@@ -50,21 +41,22 @@ const CentersList: FC = () => {
         <Table sx={{ minWidth: 450 }} aria-label="centers table">
           <TableHead>
             <TableRow sx={{ backgroundColor: "#E3F2FD" }}>
-              <TableCell sx={{ fontWeight: "bold" }}>Service Center Name</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Location</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Parcels</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Number Phone</TableCell>
-              <TableCell sx={{ fontWeight: "bold" }}>Status</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>customer name</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>service center</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>destination</TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>weight </TableCell>
+              <TableCell sx={{ fontWeight: "bold" }}>date</TableCell>
               <TableCell sx={{ fontWeight: "bold" }}>Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {centers.map((center) => (
               <TableRow key={center.id}>
-                <TableCell>{center.ServiceCenterName}</TableCell>
-                <TableCell>{center.location}</TableCell>
-                <TableCell>{center.parcels}</TableCell>
-                <TableCell>{center.phoneNumber}</TableCell>
+                <TableCell>{center.customerName}</TableCell>
+                <TableCell>{center.serviceCenter}</TableCell>
+                <TableCell>{center.destination}</TableCell>
+                <TableCell>{center.weight}</TableCell>
+                <TableCell>{center.date.toLocaleDateString()}</TableCell>
                 <TableCell>
                   <Switch
                     checked={center.Actions}
@@ -73,9 +65,6 @@ const CentersList: FC = () => {
                   />
                 </TableCell>
                 <TableCell>
-                  <IconButton>
-                    <img src="/action1.png" style={{ width: "24px", height: "24px" }} />
-                  </IconButton>
                 </TableCell>
               </TableRow>
             ))}

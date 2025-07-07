@@ -2,6 +2,7 @@ import { Typography, Box, Divider } from "@mui/material";
 import React, { FC } from "react";
 import FooterButtom from "./footer-bottom";
 import {Services} from "../../constants/foootr_services_data";
+import CopyWritte from "../copy_writte";
 
 
 const Footer: FC = () => {
@@ -95,7 +96,7 @@ const Footer: FC = () => {
       </Box>
       <Divider sx={{ my: 4, borderColor: 'rgba(255,255,255,0.5)' }} />
        <FooterButtom/> 
-      
+      <CopyWritte/>
     </Box>
   );
 };

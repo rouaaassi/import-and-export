@@ -34,16 +34,16 @@ const Logo = ({ color }: colorProps) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        bgcolor: '#0118D8',
+        // bgcolor: '#0118D8',
         borderRadius: '12px',
-        p: 1,
-        boxShadow: '0 4px 12px rgba(1, 24, 216, 0.2)'
+        // boxShadow: '0 4px 12px rgba(1, 24, 216, 0.2)'
       }}>
-        <LocalShippingIcon sx={{ 
+        {/* <LocalShippingIcon sx={{ 
           color: '#fff',
           fontSize: 32,
           filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))'
-        }} />
+        }} /> */}
+        <img src='/logo22.png' alt ='logo' width={52} height={42} />
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <Typography
@@ -51,7 +51,7 @@ const Logo = ({ color }: colorProps) => {
           sx={{
             fontFamily: 'Sansita, sans-serif',
             fontWeight: 700,
-            fontSize: '24px',
+            fontSize: '1rem',
             lineHeight: 1,
             letterSpacing: '0.5px',
             color: logoColor,

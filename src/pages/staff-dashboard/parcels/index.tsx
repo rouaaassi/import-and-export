@@ -1,88 +1,126 @@
-import { Box, Button, Typography, useTheme } from "@mui/material";
-import React, { FC } from "react";
-import OrderTable from "../../../staff/components/orders/ordersTabel";
-import LayoutDashboard from "../../../staff/components/sideBar/layouts/dashboardLayout/layout";
-import AddSharpIcon from '@mui/icons-material/AddSharp';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { FC, useState } from 'react';
+import { Box, Typography } from '@mui/material';
+import DataTable, { Column } from '../../../staff/components/common/DataTable';
+import LayoutDashboard from '../../../staff/components/sideBar/layouts/dashboardLayout/layout';
 
-interface ParcelsProps {
-    setDarkMode: (val: boolean) => void;
-    darkMode: boolean;
-}
+const Parcels: FC = () => {
+  const [parcels, setParcels] = useState([
+    { 
+      id: 'TR-2024-001', 
+      name: 'Ahmed Ali', 
+      center: 'Riyadh Center', 
+      destination: 'Jeddah', 
+      weight: '2.5 kg', 
+      date: '2024-01-15', 
+      status: 'Delivered' 
+    },
+    { 
+      id: 'TR-2024-002', 
+      name: 'Sara Mohammed', 
+      center: 'Jeddah Center', 
+      destination: 'Dammam', 
+      weight: '1.8 kg', 
+      date: '2024-01-14', 
+      status: 'Delivered' 
+    },
+    { 
+      id: 'TR-2024-003', 
+      name: 'Omar Hassan', 
+      center: 'Dammam Center', 
+      destination: 'Riyadh', 
+      weight: '3.2 kg', 
+      date: '2024-01-13', 
+      status: 'Pending' 
+    },
+    { 
+      id: 'TR-2024-004', 
+      name: 'Fatima Abdullah', 
+      center: 'Mecca Center', 
+      destination: 'Medina', 
+      weight: '0.8 kg', 
+      date: '2024-01-12', 
+      status: 'Cancelled' 
+    },
+    { 
+      id: 'TR-2024-005', 
+      name: 'Khalid Ibrahim', 
+      center: 'Medina Center', 
+      destination: 'Riyadh', 
+      weight: '4.1 kg', 
+      date: '2024-01-11', 
+      status: 'Delivered' 
+    }
+  ]);
 
-const Parcels: FC<ParcelsProps> = ({ setDarkMode, darkMode }) => {
-    const theme = useTheme();
-    const isDarkMode = theme.palette.mode === 'dark';
-    
-    return (
-        <LayoutDashboard setDarkMode={setDarkMode} darkMode={darkMode}>
-            <Box sx={{ 
-                pt: 3, 
-                px: { xs: 2, sm: 4, md: 8 },
-                bgcolor: isDarkMode ? 'rgb(18, 24, 57)' : '#F5F7FA',
-                minHeight: '100vh'
-            }}>
-                <Box
-                    sx={{
-                        display: 'flex',
-                        flexDirection: { xs: 'column', sm: 'row' },
-                        alignItems: { xs: 'stretch', sm: 'center' },
-                        justifyContent: 'space-between',
-                        gap: 2,
-                        mb: 4,
-                        maxWidth: '1200px',
-                        mx: 'auto'
-                    }}
-                >
-                    <Box>
-                        <Typography
-                            sx={{
-                                fontWeight: 700,
-                                fontSize: { xs: '24px', sm: '28px', md: '32px' },
-                                color: isDarkMode ? '#fff' : '#1A1A1A',
-                                lineHeight: 1.2
-                            }}
-                        >
-                            Parcels Management
-                        </Typography>
-                        <Typography
-                            sx={{
-                                fontWeight: 400,
-                                fontSize: { xs: '14px', sm: '16px' },
-                                color: isDarkMode ? '#A0AEC0' : '#666666',
-                                lineHeight: 1.5
-                            }}
-                        >
-                            Here is a comprehensive overview of all parcels you can browse and manage.
-                        </Typography>
-                    </Box>
-                    <Button
-                        sx={{
-                            width: { xs: '100%', sm: '200px' },
-                            height: '43px',
-                            borderRadius: '12px',
-                            bgcolor: '#0118D8',
-                            color: '#fff',
-                            fontSize: '16px',
-                            fontWeight: 600,
-                            textTransform: 'none',
-                            alignSelf: { xs: 'stretch', sm: 'center' },
-                            mt: { xs: 2, sm: 0 },
-                            '&:hover': {
-                                bgcolor: '#011188',
-                            }
-                        }}
-                        startIcon={<AddSharpIcon />}
-                    >
-                        Add New Parcel
-                    </Button>
-                </Box>
+  const [darkMode, setDarkMode] = useState(false);
 
-                <Box sx={{ maxWidth: '1200px', mx: 'auto' }}>
-                    <OrderTable />
-                </Box>
-            </Box>
-        </LayoutDashboard>
-    );
+  const columns: Column[] = [
+    { field: 'id', headerName: 'ID', width: 120 },
+    { field: 'name', headerName: 'Customer Name', type: 'avatar', width: 200 },
+    { field: 'center', headerName: 'Service Center', width: 150 },
+    { field: 'destination', headerName: 'Destination', width: 150 },
+    { field: 'weight', headerName: 'Weight', width: 120 },
+    { field: 'date', headerName: 'Creation Date', type: 'date', width: 150 },
+    { field: 'status', headerName: 'Status', type: 'select', width: 120 }
+  ];
+
+  const statusOptions = [
+    { value: 'Delivered', label: 'Delivered', color: '#219653' },
+    { value: 'Pending', label: 'Pending', color: '#F2994A' },
+    { value: 'In Transit', label: 'In Transit', color: '#1976D2' },
+    { value: 'Cancelled', label: 'Cancelled', color: '#EB5757' }
+  ];
+
+  const handleAddParcel = (data: any) => {
+    const newParcel = {
+      id: `TR-${new Date().getFullYear()}-${String(parcels.length + 1).padStart(3, '0')}`,
+      ...data,
+      weight: `${data.weight} kg`
+    };
+    setParcels([...parcels, newParcel]);
+  };
+
+  const handleEditParcel = (id: string, data: any) => {
+    setParcels(parcels.map(parcel => 
+      parcel.id === id ? { 
+        ...parcel, 
+        ...data,
+        weight: `${data.weight} kg`
+      } : parcel
+    ));
+  };
+
+  const handleDeleteParcel = (id: string) => {
+    setParcels(parcels.filter(parcel => parcel.id !== id));
+  };
+
+  return (
+    <LayoutDashboard darkMode={darkMode} setDarkMode={setDarkMode}>
+    <Box sx={{ px: 13 , py:3 }}>
+      <Typography variant="h2" sx={{ mb: 1, fontWeight: 700 , fontSize:'30px' }}>
+        Parcels Management
+      </Typography>
+      <Typography variant="body1" sx={{ mb:2, color: 'text.secondary' }}>
+        Manage your parcels and track their status
+      </Typography>
+
+      <DataTable
+        title="Parcel"
+        description="Manage parcels"
+        columns={columns}
+        data={parcels}
+        onAdd={handleAddParcel}
+        onEdit={handleEditParcel}
+        onDelete={handleDeleteParcel}
+        onView={(id) => console.log('View parcel:', id)}
+        statusOptions={statusOptions}
+        addButtonText="Add New Parcel"
+        viewPath="/parcels"
+      />
+    </Box>
+    </LayoutDashboard>
+  );
 };
 
 export default Parcels;
