@@ -7,17 +7,17 @@ const SignupButton = ({ onClick }: { onClick: () => void }) => (
     variant="outlined"
     sx={{
       borderRadius: '30px',
-      borderColor: '#118D8',
+      borderColor: '#1108D8',
       borderWidth: '2px',
       borderStyle: 'solid',
       backgroundColor: '#ffffff',
-      color: '#118D8',
+      color: '#1108D8',
       px: 3,
       fontWeight: 'bold',
       textTransform: 'none',
     }}
   >
-    Sign up
+    Dashboard
   </Button>
 );
 

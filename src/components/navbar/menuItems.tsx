@@ -46,7 +46,7 @@ const MenuItems: FC<MenuItemsProps> = ({ pages, scrolled = false }) => {
     <Box sx={{ 
       display: 'flex', 
       alignItems: 'center', 
-      gap: 4,
+      gap: 7,
       whiteSpace: 'nowrap'
     }}>
       {pages.map((page) => (
@@ -67,7 +67,7 @@ const MenuItems: FC<MenuItemsProps> = ({ pages, scrolled = false }) => {
               sx={{
                 color: scrolled ? '#0118D8' : '#333',
                 fontWeight: 'bold',
-                fontSize: '16px',
+                fontSize: '0.8rem',
                 textTransform: 'none',
                 transition: 'color 0.3s ease',
                 whiteSpace: 'nowrap',
@@ -83,7 +83,7 @@ const MenuItems: FC<MenuItemsProps> = ({ pages, scrolled = false }) => {
               sx={{
                 color: scrolled ? '#0118D8' : '#333',
                 fontWeight: 'bold',
-                fontSize: '16px',
+                fontSize: '0.8rem',
                 textTransform: 'none',
                 transition: 'color 0.3s ease',
                 whiteSpace: 'nowrap',
@@ -100,7 +100,7 @@ const MenuItems: FC<MenuItemsProps> = ({ pages, scrolled = false }) => {
               sx={{
                 color: scrolled ? '#0118D8' : '#fff',
                 fontWeight: 'bold',
-                fontSize: '16px',
+                fontSize: '0.8rem',
                 textTransform: 'none',
                 transition: 'color 0.3s ease',
                 whiteSpace: 'nowrap',
@@ -116,7 +116,7 @@ const MenuItems: FC<MenuItemsProps> = ({ pages, scrolled = false }) => {
               sx={{
                 color: scrolled ? '#0118D8' : '#fff',
                 fontWeight: 'bold',
-                fontSize: '16px',
+                fontSize: '0.8rem',
                 textTransform: 'none',
                 transition: 'color 0.3s ease',
                 whiteSpace: 'nowrap',

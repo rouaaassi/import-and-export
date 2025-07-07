@@ -61,10 +61,10 @@ const ServicesSection: FC = () => {
                 <Icon sx={{ color: '#2196f3', fontSize: 32 }}>{card.icon}</Icon>
               </Avatar>
               <CardContent sx={{ pt: 0.1, textAlign: 'center', flexGrow: 1 }}>
-                <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
+                <Typography variant="body1" sx={{ fontWeight: 700, mb: 1 , color:"#333" }}>
                   {card.title}
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="#333">
                   {card.description}
                 </Typography>
               </CardContent>

@@ -25,7 +25,7 @@ const CardsContent = ({ open }: CardsContentProps) => {
                             xs: "1fr",
                             sm: "repeat(2, 1fr)",
                             md: "repeat(2, 1fr)",
-                            lg: "repeat(3, 1fr)",
+                            lg: "repeat(4, 1fr)",
                             xl: "repeat(4, 1fr)"
                         },
                     gap: open ? 2.5 : 3.5,
